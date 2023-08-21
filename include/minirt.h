@@ -15,6 +15,7 @@
 typedef struct s_data
 {
 	mlx_t	*mlx;
+	char	**map;
 }	t_data;
 
 
