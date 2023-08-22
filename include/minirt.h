@@ -4,6 +4,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <stdint.h>
 # include <math.h>
 
 # include "../lib/libft/libft.h"
@@ -14,12 +15,16 @@
 # define TITLE	"miniRT"
 
 # define DEFAULT_BACKGROUD	0xB6BDCCFF
+# define DEFAULT_TOUCH 0xFF0000FF
+
+# define INVALID 0
+# define VALID 1
 
 typedef struct s_vec
 {
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
 }	t_vec;
 
 typedef struct s_data
