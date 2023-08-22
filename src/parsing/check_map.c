@@ -21,7 +21,6 @@ int	check_if_valid(t_data *data)
 		j = 0;
 		while (data->map[i][j])
 		{
-			
 		}
 	}
 }
