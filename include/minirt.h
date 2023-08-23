@@ -30,6 +30,10 @@ typedef struct s_vec
 typedef struct s_data
 {
 	mlx_t	*mlx;
+	int		viewport_height;
+	double	viewport_width;
+	t_vec	cam;
+	t_vec	cam_direction;
 }	t_data;
 
 
