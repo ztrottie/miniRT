@@ -20,6 +20,13 @@
 # define INVALID 0
 # define VALID 1
 
+typedef	struct s_ray
+{
+	t_vec	or;
+	t_vec	dir;
+}	t_ray;
+
+
 typedef struct s_vec
 {
 	double	x;

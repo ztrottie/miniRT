@@ -36,10 +36,9 @@ int	quadratic_formula(t_quad *quad)
 /// @param vec1 start of the vector
 /// @param vec2 direciton of the vector
 /// @param r radius of the sphere
-void	quadratic_function(t_quad *quad, t_vec vec1, t_vec vec2, double r)
+void	hit_sphere(t_vec center, double radius, t_ray ray)
 {
-	quad->a = sqr(vec2->x) + sqr(vec2->y) + sqr(vec2->z);
-	quad->b = (2 * vec1->x * vec2->x) + (2 * vec1->y * vec2->y) + \
-	(2 * vec1->z * vec2->z);
-	quad->c = sqr(vec1->x) + sqr(vec1->y) + sqr(vec1->z) + sqr(r);
+	t_vec oc;
+
+	oc = 
 }
