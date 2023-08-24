@@ -47,6 +47,11 @@ int	put_color(t_data *data, t_ray ray)
 	return (get_rgba(r, g, 0, 255));
 }
 
+int	open_map(t_data *data)
+{
+	
+}
+
 void	ray_tracer(t_data *data)
 {
 	int		i;
