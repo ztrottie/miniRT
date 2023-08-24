@@ -7,6 +7,11 @@ void	init_data(t_data *data)
 	data->viewport_width = data->viewport_height * ((double)WIDTH / HEIGHT);
 }
 
+int	open_map(t_data *data)
+{
+	
+}
+
 void	ray_tracer(t_data *data)
 {
 	int	i;
@@ -18,7 +23,6 @@ void	ray_tracer(t_data *data)
 		j = 0;
 		while (j < WIDTH)
 		{
-			
 			j++;
 		}
 		i++
