@@ -1,4 +1,4 @@
-#include "../../include/minirt.h"
+#include "../include/parsing.h"
 
 int	check_file_extention(char *av)
 {
@@ -9,18 +9,26 @@ int	check_file_extention(char *av)
 		return (ft_strncmp(av, ".rt", 3));
 }
 
-int	check_if_valid(t_data *data)
+int	check_component(char **str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (data->map[i])
+	while (str[i])
 	{
-		j = 0;
-		while (data->map[i][j])
-		{
-		}
+		if (ft_strncmp(str[i], 'A', 2) == 0)
+			i++;
+		if (ft_strncmp(str[i], 'L', 2) == 0)
+			i++;
+		if (ft_strncmp(str[i], 'C', 2) == 0)
+			i++;
+		if (ft_strncmp(str[i], "sp", 3) == 0)
+			i++;
+		if (ft_strncmp(str[i], "pl", 3) == 0)
+			i++;
+		if (ft_strncmp(str[i], "cy", 3) == 0)
+			i++;
+		i++;
 	}
+	return (VALID);
 }
