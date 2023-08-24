@@ -22,14 +22,24 @@ LIBMLX_VERSION	=	v2.3.2
 BIN_DIR			=	bin/
 
 RUN_DIR			=	src/run/
+MATH_DIR		=	src/maths/
 
 RUN_SRCS		=	main.c
 
-RUN_OBJS		=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
+MATH_SRCS		=	basic_operation.c \
+					basic_vector_operation.c \
+					dot_product.c \
+					quadratic_function.c
 
-OBJS			=	$(RUN_OBJS)
+RUN_OBJS		=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
+MATH_OBJS		=	$(addprefix ${BIN_DIR}, ${MATH_SRCS:.c=.o})
+
+OBJS			=	$(RUN_OBJS) $(MATH_OBJS)
 
 ${BIN_DIR}%.o: ${RUN_DIR}%.c
+	@${CC} ${CFLAGS} -c $< -o $@
+
+${BIN_DIR}%.o: ${MATH_DIR}%.c
 	@${CC} ${CFLAGS} -c $< -o $@
 
 all: brew $(LIB_DIR) $(BIN_DIR) libft libmlx $(BIN_DIR) $(NAME)
