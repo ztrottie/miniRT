@@ -14,7 +14,7 @@ typedef struct s_quad
 }	t_quad;
 
 double	sqr(double a);
-bool	hit_sphere(t_vec center, double radius, t_ray ray);
+double	hit_sphere(t_vec center, double radius, t_ray ray);
 double	dot_product(t_vec v1, t_vec v2);
 t_vec	vec_div(double div, t_vec v1);
 t_vec	vec_mult(double mult, t_vec v1);
@@ -24,5 +24,6 @@ t_vec   vec_sub_nb(t_vec v1, double sub);
 t_vec	vec_add_nb(t_vec v1, double add);
 t_vec	normalize_vector(t_vec vec);
 double	vector_length(t_vec vec);
+t_point	ray_at(t_ray ray, double t);
 
 #endif
