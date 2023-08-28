@@ -1,23 +1,5 @@
 #include "../../include/run.h"
 
-t_vec	init_vector(double x, double y, double z)
-{
-	t_vec	new_vec;
-
-	new_vec.x = x;
-	new_vec.y = y;
-	new_vec.z = z;
-	return (new_vec);
-}
-
-t_ray	init_ray(t_vec or, t_vec dir)
-{
-	t_ray	ray;
-
-	ray.dir = dir;
-	ray.or = or;
-	return (ray);
-}
 
 void	init_data(t_data *data)
 {
@@ -28,29 +10,31 @@ void	init_data(t_data *data)
 	data->cam = init_vector(0, 0, 0);
 }
 
-int get_rgba(int r, int g, int b, int a)
-{
-    return (r << 24 | g << 16 | b << 8 | a);
-}
-
-int	put_color(t_data *data, t_ray ray)
+int	put_color(t_ray ray)
 {
 	t_vec	unit_direction;
-	int		r;
-	int		g;
+	t_vec	n;
+	t_color	color;
+	double	t;
+	float	a;
 
+	t = hit_sphere(init_vector(0, 0, -1), 0.5, ray);
+	if (t > 0)
+	{
+		n = normalize_vector(vec_sub_vec(ray_at(ray, t), init_vector(0, 0, -1)));
+		color = vec_mult(0.5, init_vector(n.x + 1, n.y + 1, n.z + 1));
+		return (get_color(color));
+	}
 	unit_direction = normalize_vector(ray.dir);
-	if (hit_sphere(init_vector(-10, -7, -10), 1, ray))
-		return (get_rgba(255, 0, 0, 255));
-	r = fabs(unit_direction.y) * (255 / data->viewport_height);
-	g = fabs(unit_direction.x) * (255 / data->viewport_width);
-	return (get_rgba(r, g, 0, 255));
+	a = 0.5*(unit_direction.y + 1);
+	color = vec_add(vec_mult((1 - a), init_vector(1, 1, 1)), vec_mult(a, init_vector(0.5, 0.7, 1)));
+	return (get_color(color));
 }
 
-int	open_map(t_data *data)
-{
+// int	open_map(t_data *data)
+// {
 	
-}
+// }
 
 void	ray_tracer(t_data *data)
 {
@@ -73,11 +57,6 @@ void	ray_tracer(t_data *data)
 	delta_u = vec_div(HEIGHT, viewport_u);
 	upper_left = vec_sub_vec(vec_sub_vec(vec_sub_vec(data->cam, init_vector(0, 0, data->focal_length)), vec_div(2, viewport_u)), vec_div(2, viewport_v));
 	pixel00_loc = vec_add(upper_left, vec_mult(0.5, vec_add(delta_u, delta_v)));
-	printf("viewport_center |x:%f y:%f z:%f|\n", viewport_center.x, viewport_center.y, viewport_center.z);
-	printf("delta_v |x:%f y:%f z:%f|\n", delta_v.x, delta_v.y, delta_v.z);
-	printf("delta_u |x:%f y:%f z:%f|\n", delta_u.x, delta_u.y, delta_u.z);
-	printf("upper_left |x:%f y:%f z:%f|\n", upper_left.x, upper_left.y, upper_left.z);
-	printf("pixel00_loc |x:%f y:%f z:%f|\n", pixel00_loc.x, pixel00_loc.y, pixel00_loc.z);
 	j = 0;
 	while (j < HEIGHT)
 	{
@@ -86,7 +65,7 @@ void	ray_tracer(t_data *data)
 		{
 			ray_direction = vec_sub_vec(vec_add(pixel00_loc, vec_add(vec_mult(i, delta_v), vec_mult(j, delta_u))), data->cam);
 			ray = init_ray(data->cam, ray_direction);
-			mlx_put_pixel(data->mlx_image, i, j, put_color(data, ray));
+			mlx_put_pixel(data->mlx_image, i, j, put_color(ray));
 			i++;
 		}
 		j++;

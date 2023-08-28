@@ -23,24 +23,34 @@ BIN_DIR			=	bin/
 
 RUN_DIR			=	src/run/
 MATH_DIR		=	src/maths/
+RENDERER_DIR	=	src/renderer/
 
 RUN_SRCS		=	main.c
 
 MATH_SRCS		=	basic_operation.c \
 					basic_vector_operation.c \
 					dot_product.c \
-					quadratic_function.c
+					quadratic_function.c \
+					basic_ray_operation.c
+
+RENDERER_SRCS	=	renderer.c \
+					init_vectors.c \
+					color.c
 
 RUN_OBJS		=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
 MATH_OBJS		=	$(addprefix ${BIN_DIR}, ${MATH_SRCS:.c=.o})
+RENDERER_OBJS	=	$(addprefix $(BIN_DIR), ${RENDERER_SRCS:.c=.o})
 
-OBJS			=	$(RUN_OBJS) $(MATH_OBJS)
+OBJS			=	$(RUN_OBJS) $(MATH_OBJS) $(RENDERER_OBJS)
 
 ${BIN_DIR}%.o: ${RUN_DIR}%.c
 	@${CC} ${CFLAGS} -c $< -o $@
 
 ${BIN_DIR}%.o: ${MATH_DIR}%.c
 	@${CC} ${CFLAGS} -c $< -o $@
+
+$(BIN_DIR)%.o: $(RENDERER_DIR)%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: brew $(LIB_DIR) $(BIN_DIR) libft libmlx $(BIN_DIR) $(NAME)
 	@echo "miniRT compiled!"

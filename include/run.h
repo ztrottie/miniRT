@@ -3,5 +3,6 @@
 
 # include "minirt.h"
 # include "maths.h"
+# include "renderer.h"
 
 #endif

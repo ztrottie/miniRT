@@ -28,12 +28,14 @@ typedef struct s_vec
 	double	z;
 }	t_vec;
 
+typedef t_vec t_color;
+typedef t_vec t_point;
+
 typedef	struct s_ray
 {
 	t_vec	or;
 	t_vec	dir;
 }	t_ray;
-
 
 
 typedef struct s_data
