@@ -12,7 +12,6 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 
 # define WIDTH 1920
-# define HEIGHT 1080
 # define TITLE	"miniRT"
 
 # define DEFAULT_BACKGROUD	0x000000FF
@@ -37,14 +36,25 @@ typedef	struct s_ray
 	t_vec	dir;
 }	t_ray;
 
+typedef struct	s_viewport
+{
+	double	vp_height;
+	double	vp_width;
+	t_vec	delta_v;
+	t_vec	delta_u;
+	t_vec	vp_v;
+	t_vec	vp_u;
+	t_vec	vp_center;
+	t_vec	upper_left;
+	t_vec	p00_loc;
+}	t_viewport;
 
 typedef struct s_data
 {
 	mlx_t		*mlx;
 	mlx_image_t	*mlx_image;
-	int			viewport_height;
-	double		viewport_width;
-	double		focal_length;
+	double		img_height;
+	double		foc_len;
 	t_vec		cam;
 }	t_data;
 
