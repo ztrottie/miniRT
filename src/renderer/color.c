@@ -21,14 +21,16 @@ int	put_color(t_ray ray)
 {
 	t_vec	unit_direction;
 	t_vec	n;
+	t_point	sphere_center;
 	t_color	color;
 	double	t;
 	float	a;
 
-	t = hit_sphere(init_vec(0, 0, -1), 0.5, ray);
+	sphere_center = init_vec(3, 0, -5);
+	t = hit_sphere(sphere_center, 0.5, ray);
 	if (t > 0)
 	{
-		n = normalize_vector(vec_sub_vec(ray_at(ray, t), init_vec(0, 0, -1)));
+		n = normalize_vector(vec_sub_vec(ray_at(ray, t), sphere_center));
 		color = vec_mult(0.5, init_vec(n.x + 1, n.y + 1, n.z + 1));
 		return (get_color(color));
 	}
