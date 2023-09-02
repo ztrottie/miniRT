@@ -11,7 +11,7 @@
 # include "../lib/libft/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 
-# define WIDTH 1920
+# define WIDTH 1080
 # define TITLE	"miniRT"
 
 # define DEFAULT_BACKGROUD	0x000000FF
@@ -53,7 +53,7 @@ typedef struct s_data
 {
 	mlx_t		*mlx;
 	mlx_image_t	*mlx_image;
-	double		img_height;
+	int			img_height;
 	double		foc_len;
 	t_vec		cam;
 }	t_data;
