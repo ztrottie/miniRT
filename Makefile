@@ -1,5 +1,13 @@
 NAME			=	miniRT
 
+ifeq ($(shell uname -s),Linux)
+    OS := Linux
+    LDFLAGS := -ldl -lglfw -pthread -lm
+else ifeq ($(shell uname -s),Darwin)
+    OS := macOS
+    LDFLAGS := -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -framework Cocoa -framework OpenGL -framework IOKit
+endif
+
 CC				=	gcc
 CFLAGS			=	-Wextra -Werror -Wall -g
 
@@ -57,7 +65,7 @@ all: brew $(LIB_DIR) $(BIN_DIR) libft libmlx $(BIN_DIR) $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "compiling miniRT!"
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LIBMLX) -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -framework Cocoa -framework OpenGL -framework IOKit -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LIBMLX) $(LDFLAGS) -o $(NAME)
 
 clean:
 	@rm -fr $(BIN_DIR)

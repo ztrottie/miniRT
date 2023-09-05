@@ -1,6 +1,6 @@
 #include "../../include/renderer.h"
 
-t_vec	init_vector(double x, double y, double z)
+t_vec	init_vec(double x, double y, double z)
 {
 	t_vec	new_vec;
 
