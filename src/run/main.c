@@ -18,7 +18,7 @@ int	put_color(t_ray ray)
 	double	t;
 	float	a;
 
-	t = hit_sphere(init_vector(0, 0, -2), 4, ray);
+	t = hit_sphere(init_vector(-1, 0, -1), 0.5, ray);
 	if (t > 0)
 	{
 		n = normalize_vector(vec_sub_vec(ray_at(ray, t), init_vector(0, 0, -1)));

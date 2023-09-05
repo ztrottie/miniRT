@@ -45,7 +45,7 @@ char	*read_map(t_data *data)
 // 			i++;
 // 		if (ft_strncmp(str[i], 'L', 2) == 0)
 // 			i++;
-// 		if (ft_strncmp(str[i], 'C', 2) == 0)
+// 		if (ft_strncmp(str[i], 'C', 2) == 0)	
 // 			i++;
 // 		if (ft_strncmp(str[i], "sp", 3) == 0)
 // 			i++;
