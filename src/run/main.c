@@ -18,7 +18,7 @@ int	put_color(t_ray ray)
 	double	t;
 	float	a;
 
-	t = hit_sphere(init_vector(0, 0, -1), 0.5, ray);
+	t = hit_sphere(init_vector(-1, 0, -1), 0.5, ray);
 	if (t > 0)
 	{
 		n = normalize_vector(vec_sub_vec(ray_at(ray, t), init_vector(0, 0, -1)));
@@ -30,11 +30,6 @@ int	put_color(t_ray ray)
 	color = vec_add(vec_mult((1 - a), init_vector(1, 1, 1)), vec_mult(a, init_vector(0.5, 0.7, 1)));
 	return (get_color(color));
 }
-
-// int	open_map(t_data *data)
-// {
-	
-// }
 
 void	ray_tracer(t_data *data)
 {

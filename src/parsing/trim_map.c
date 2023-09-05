@@ -11,18 +11,17 @@ int	skip_white_space(char *str)
 }
 
 
-char	**split_map(char **str)
+char	**split_map(t_data *data)
 {
 	int		i;
-	int		j;
+	char	*temp;
 	char	**splited_map;
 
 	i = 0;
-	j = 0;
-	while (str[i])
+	temp = read_map(data);
+	while (temp)
 	{
-		j = skip_white_space(str[i]);
-		splited_map = ft_split(str[i], 32);
+		splited_map = ft_split(temp, 32);
 		i++;
 	}
 	return (splited_map);
