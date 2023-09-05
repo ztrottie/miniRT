@@ -6,16 +6,22 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <stdbool.h>
+# include <limits.h>
 # include <math.h>
 
 # include "../lib/libft/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 
-# define WIDTH 1080
+# define WIDTH 1920
 # define TITLE	"miniRT"
 
 # define DEFAULT_BACKGROUD	0x000000FF
 # define DEFAULT_TOUCH 0xFF0000FF
+
+# define T_MIN 0
+# define T_MAX INT_MAX
+
+# define MAX_ITER 10
 
 # define INVALID 0
 # define VALID 1
@@ -35,6 +41,27 @@ typedef	struct s_ray
 	t_vec	or;
 	t_vec	dir;
 }	t_ray;
+
+typedef struct s_sphere
+{
+	t_point	center;
+	t_color	color;
+	double	radius;
+}	t_sphere;
+
+typedef struct s_cyl
+{
+	t_point center;
+	t_color	color;
+	double	diameter;
+}	t_cyl;
+
+
+typedef struct s_objs
+{
+	char	type;
+}	t_objs;
+
 
 typedef struct	s_viewport
 {

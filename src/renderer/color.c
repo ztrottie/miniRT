@@ -26,7 +26,7 @@ int	put_color(t_ray ray)
 	double	t;
 	float	a;
 
-	sphere_center = init_vec(3, 0, -5);
+	sphere_center = init_vec(0, 0, -1);
 	t = hit_sphere(sphere_center, 0.5, ray);
 	if (t > 0)
 	{
