@@ -21,7 +21,7 @@ static t_vec	vp_p00_loc(t_viewport *vp)
 static void	init_viewport(t_data *data, t_viewport *vp)
 {
 	vp->vp_height = 2.0;
-	vp->vp_width = vp->vp_height * ((WIDTH / data->img_height));
+	vp->vp_width = vp->vp_height * (((double)WIDTH / data->img_height));
 	vp->vp_center = vec_sub_vec(data->cam, init_vec(0, 0, data->foc_len));
 	vp->vp_v = init_vec(vp->vp_width, 0, 0);
 	vp->vp_u = init_vec(0, -vp->vp_height, 0);
