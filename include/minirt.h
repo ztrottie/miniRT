@@ -79,6 +79,7 @@ typedef struct	s_viewport
 typedef struct s_data
 {
 	mlx_t		*mlx;
+	int			fd;
 	mlx_image_t	*mlx_image;
 	int			img_height;
 	double		foc_len;

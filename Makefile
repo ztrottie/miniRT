@@ -32,6 +32,7 @@ BIN_DIR			=	bin/
 RUN_DIR			=	src/run/
 MATH_DIR		=	src/maths/
 RENDERER_DIR	=	src/renderer/
+PARSING_DIR		=	src/parsing/
 
 RUN_SRCS		=	main.c
 
@@ -45,11 +46,15 @@ RENDERER_SRCS	=	renderer.c \
 					init_vectors.c \
 					color.c
 
-RUN_OBJS		=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
-MATH_OBJS		=	$(addprefix ${BIN_DIR}, ${MATH_SRCS:.c=.o})
-RENDERER_OBJS	=	$(addprefix $(BIN_DIR), ${RENDERER_SRCS:.c=.o})
+PARSING_SRCS	=	check_map.c \
+					trim_map.c \
 
-OBJS			=	$(RUN_OBJS) $(MATH_OBJS) $(RENDERER_OBJS)
+RUN_OBJS			=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
+MATH_OBJS			=	$(addprefix ${BIN_DIR}, ${MATH_SRCS:.c=.o})
+RENDERER_OBJS		=	$(addprefix $(BIN_DIR), ${RENDERER_SRCS:.c=.o})
+PARSING_OBJS		=	$(addprefix ${BIN_DIR}, ${PARSING_SRCS:.c=.o})
+
+OBJS				=	$(RUN_OBJS) $(MATH_OBJS) $(RENDERER_OBJS) $(PARSING_OBJS)
 
 ${BIN_DIR}%.o: ${RUN_DIR}%.c
 	@${CC} ${CFLAGS} -c $< -o $@
@@ -58,6 +63,9 @@ ${BIN_DIR}%.o: ${MATH_DIR}%.c
 	@${CC} ${CFLAGS} -c $< -o $@
 
 $(BIN_DIR)%.o: $(RENDERER_DIR)%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(BIN_DIR)%.o: $(PARSING_DIR)%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: brew $(LIB_DIR) $(BIN_DIR) libft libmlx $(BIN_DIR) $(NAME)

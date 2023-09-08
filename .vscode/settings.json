@@ -3,6 +3,7 @@
 	"files.associations": {
 		"math.h": "c",
 		"parsing.h": "c",
-		"minirt.h": "c"
+		"minirt.h": "c",
+		"run.h": "c"
 	}
 }

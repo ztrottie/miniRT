@@ -1,4 +1,4 @@
-#include "../include/parsing.h"
+#include "../../include/parsing.h"
 
 int	skip_white_space(char *str)
 {
@@ -10,19 +10,16 @@ int	skip_white_space(char *str)
 	return (i);
 }
 
-
 char	**split_map(t_data *data)
 {
-	int		i;
-	char	*temp;
-	char	**splited_map;
+	char	**map_split = NULL;
+	char	*map;
 
-	i = 0;
-	temp = read_map(data);
-	while (temp)
-	{
-		splited_map = ft_split(temp, 32);
-		i++;
-	}
-	return (splited_map);
-}
+	map = read_map(data);
+	if (map)
+		map_split = ft_split(map, 32);
+	if (!map_split)
+		return(INVALID);
+	printf("%s\n", map);
+	return (map_split);
+}	

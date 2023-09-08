@@ -13,9 +13,7 @@
 
 int			open_map(t_data *data, char *arg);
 int			check_file_extention(char *av);
-int			check_component(char **str);
 char		*read_map(t_data *data);
-
-
+char		**split_map(t_data *data);
 
 #endif
