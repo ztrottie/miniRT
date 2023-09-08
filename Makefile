@@ -38,12 +38,13 @@ RUN_SRCS		=	main.c
 MATH_SRCS		=	basic_operation.c \
 					basic_vector_operation.c \
 					dot_product.c \
-					quadratic_function.c \
 					basic_ray_operation.c
 
 RENDERER_SRCS	=	renderer.c \
 					init_vectors.c \
-					color.c
+					color.c \
+					hit_sphere.c \
+					ray_collision.c
 
 RUN_OBJS		=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
 MATH_OBJS		=	$(addprefix ${BIN_DIR}, ${MATH_SRCS:.c=.o})

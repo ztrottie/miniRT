@@ -15,7 +15,7 @@ double	vector_length(t_vec vec)
 	return(sqrt(sqr(vec.x) + sqr(vec.y) + sqr(vec.z)));
 }
 
-t_vec	normalize_vector(t_vec vec)
+t_vec	normalize(t_vec vec)
 {
 	double	vec_len;
 

@@ -77,32 +77,23 @@ typedef struct s_objs
 
 typedef struct s_hitrec
 {
-	t_point	point;
-	t_vec	normal;
-	double	t;
+	bool		hit;
+	t_point		hitpoint;
+	t_vec		normal;
+	t_material	material;
+	double		t;
 }	t_hitrec;
-
-
-typedef struct	s_viewport
-{
-	double	vp_height;
-	double	vp_width;
-	t_vec	delta_v;
-	t_vec	delta_u;
-	t_vec	vp_v;
-	t_vec	vp_u;
-	t_vec	vp_center;
-	t_vec	upper_left;
-	t_vec	p00_loc;
-}	t_viewport;
 
 typedef struct s_data
 {
 	mlx_t		*mlx;
 	mlx_image_t	*mlx_image;
 	t_objs		objs;
+	int			nb_sphere;
+	int			nb_plane;
+	int			nb_cyl;
 	int			img_height;
-	double		foc_len;
+	double		fov;
 	t_vec		cam;
 }	t_data;
 
