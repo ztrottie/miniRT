@@ -11,24 +11,28 @@ int	get_color(t_color color)
 	int g;
 	int b;
 
-	r = color.x * 255;
-	g = color.y * 255;
-	b = color.z * 255;
+	r = color.x * 255.0;
+	g = color.y * 255.0;
+	b = color.z * 255.0;
 	return (get_rgba(r, g, b, 255));
 }
 
 int	put_color(t_data *data, t_ray ray)
 {
 	t_hitrec	hitrec;
-	t_vec		unit_direction;
-	t_color		color;
-	float		a;
+	// t_color		color;
+	// float		a;
 
 	hitrec = ray_collisions(data, ray);
 	if (hitrec.hit)
-		return (get_color(normalize(hitrec.material.color)));
-	unit_direction = normalize(ray.dir);
-	a = 0.5*(unit_direction.y + 1);
-	color = vec_add(vec_mult((1 - a), init_vec(1, 1, 1)), vec_mult(a, init_vec(0.5, 0.7, 1)));
-	return (get_color(color));
+	{
+		hitrec = hit_light(data, hitrec);
+		if (hitrec.hit)
+		{
+			return (get_color(hitrec.material.color));
+		}
+	}
+	// a = 0.5 * (ray.dir.y + 1);
+	// color = vec_add(vec_mult((1 - a), init_vec(1, 1, 1)), vec_mult(a, init_vec(0.5, 0.7, 1)));
+	return (get_color(init_vec(0, 0, 0)));
 }

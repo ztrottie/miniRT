@@ -35,5 +35,6 @@ int			get_color(t_color color);
 int			put_color(t_data *data, t_ray ray);
 void		ray_tracer(t_data *data);
 t_hitrec	ray_collisions(t_data *data, t_ray ray);
+t_hitrec	hit_light(t_data *data, t_hitrec hitrec);
 
 #endif

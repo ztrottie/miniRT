@@ -8,7 +8,7 @@ t_hitrec	sphere_collisions(t_data *data, t_ray ray)
 	t_sphere	*sphere;;
 
 	i = 0;
-	closest_hit.t = INT_MAX;
+	closest_hit.t = INFINITY;
 	if (data->objs.sphere)
 	{
 		sphere = data->objs.sphere;

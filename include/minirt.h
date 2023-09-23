@@ -46,6 +46,7 @@ typedef struct s_ray
 typedef struct	s_material
 {
 	t_color	color;
+	float	bright;
 }	t_material;
 
 typedef struct s_sphere
@@ -75,6 +76,18 @@ typedef struct s_objs
 	t_plane		*plane;
 }	t_objs;
 
+typedef struct s_alight
+{
+	t_material	material;
+}	t_alight;
+
+typedef struct s_light
+{
+	t_point		center;
+	t_material	material;
+}	t_light;
+
+
 typedef struct s_hitrec
 {
 	bool		hit;
@@ -89,6 +102,8 @@ typedef struct s_data
 	mlx_t		*mlx;
 	mlx_image_t	*mlx_image;
 	t_objs		objs;
+	t_light		light;
+	t_alight	alight;
 	int			nb_sphere;
 	int			nb_plane;
 	int			nb_cyl;

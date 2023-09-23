@@ -44,7 +44,8 @@ RENDERER_SRCS	=	renderer.c \
 					init_vectors.c \
 					color.c \
 					hit_sphere.c \
-					ray_collision.c
+					ray_collision.c \
+					light_collision.c
 
 RUN_OBJS		=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
 MATH_OBJS		=	$(addprefix ${BIN_DIR}, ${MATH_SRCS:.c=.o})
@@ -119,4 +120,7 @@ brew:
         echo "$(COLOUR_YELLOW)Homebrew is not installed. Please follow the instructions of this website to install it: $(COLOUR_GREEN)https://brew.sh/index_fr$(COLOUR_END)"; \
     fi
 
-.PHONY: all clean fclean re libmlx brew
+run: re
+	./miniRT
+
+.PHONY: all clean fclean re libmlx brew run
