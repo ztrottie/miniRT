@@ -10,6 +10,14 @@ t_vec	vec_add(t_vec v1, t_vec v2)
 	return (res);
 }
 
+double	vec_dist(t_vec v1, t_vec v2)
+{
+	double t;
+
+	t = sqrt(sqr(v2.x - v1.x) + sqr(v2.y - v1.y) + sqr(v2.z - v1.z));
+	return (t);
+}
+
 double	vector_length(t_vec vec)
 {
 	return(sqrt(sqr(vec.x) + sqr(vec.y) + sqr(vec.z)));

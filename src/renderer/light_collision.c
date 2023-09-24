@@ -5,19 +5,19 @@ t_hitrec	hit_light(t_data *data, t_hitrec hitrec)
 	t_ray		ray;
 	t_vec		ray_direction;
 	t_hitrec	hitrec2;
+	double		bright;
 
-	ray_direction = vec_sub_vec(data->light.center, hitrec.hitpoint);
+	ray_direction = normalize(vec_sub_vec(data->light.center, hitrec.hitpoint));
 	ray = init_ray(hitrec.hitpoint, ray_direction);
-	hitrec2 = ray_collisions(data, ray);
+	hitrec2 = ray_collisions(data, ray, vec_dist(hitrec.hitpoint, data->light.center));
 	if (hitrec2.hit)
-	{
-		hitrec2 = hitrec;
-		hitrec2.material.color = vec_mult(data->alight.material.bright, hitrec2.material.color);
-	}
+		hitrec.material.color = vec_mult(data->alight.material.bright, hitrec.material.color);
 	else
 	{
-		hitrec2 = hitrec;
-		hitrec2.material.color = vec_mult(data->light.material.bright, hitrec2.material.color);
+		bright = dot_product(hitrec.normal, ray_direction) * data->light.material.bright;
+		if (bright < data->alight.material.bright)
+			bright = data->alight.material.bright;
+		hitrec.material.color = vec_mult(bright, hitrec.material.color);
 	}
-	return (hitrec2);
+	return (hitrec);
 }

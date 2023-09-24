@@ -25,11 +25,11 @@ int	main(int argc, char **argv)
 	data.nb_sphere = 4;
 	data.objs.sphere[0].center = init_vec(1, 0, -3);
 	data.objs.sphere[0].radius = 0.5;
-	data.objs.sphere[0].material.color = normalize(init_vec(255, 0, 0));
+	data.objs.sphere[0].material.color = normalize(init_vec(255, 0, 255));
 
 	data.objs.sphere[1].center = init_vec(0, 0, -2);
 	data.objs.sphere[1].radius = 0.5;
-	data.objs.sphere[1].material.color = normalize(init_vec(0, 255, 0));
+	data.objs.sphere[1].material.color = normalize(init_vec(222, 8, 152));
 
 	data.objs.sphere[2].center = init_vec(-1, 0, -3);
 	data.objs.sphere[2].radius = 0.5;
@@ -37,11 +37,11 @@ int	main(int argc, char **argv)
 
 	data.objs.sphere[3].center = init_vec(0, -4.35, -3);
 	data.objs.sphere[3].radius = 4;
-	data.objs.sphere[3].material.color = normalize(init_vec(40, 160, 200));
+	data.objs.sphere[3].material.color = normalize(init_vec(100, 160, 200));
 
 	data.alight.material.bright = 0.2;
 
-	data.light.center = init_vec(-2, 4, 10);
+	data.light.center = init_vec(-5, 10, 0);
 	data.light.material.bright = 1;
 
 	ray_tracer(&data);

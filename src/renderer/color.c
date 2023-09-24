@@ -7,9 +7,9 @@ int get_rgba(int r, int g, int b, int a)
 
 int	get_color(t_color color)
 {
-	int	r;
-	int g;
-	int b;
+	double	r;
+	double	g;
+	double	b;
 
 	r = color.x * 255.0;
 	g = color.y * 255.0;
@@ -23,7 +23,7 @@ int	put_color(t_data *data, t_ray ray)
 	// t_color		color;
 	// float		a;
 
-	hitrec = ray_collisions(data, ray);
+	hitrec = ray_collisions(data, ray, T_MAX);
 	if (hitrec.hit)
 	{
 		hitrec = hit_light(data, hitrec);

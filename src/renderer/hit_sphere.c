@@ -21,7 +21,7 @@ t_hitrec	hit_sphere(t_sphere sphere, t_ray ray, double t_max, double t_min)
 			return (hitrec.hit = false, hitrec);
 	}
 	hitrec.hit = true;
-	hitrec.hitpoint = vec_add(ray.or, vec_mult(hitrec.t, ray.dir));
+	hitrec.hitpoint = vec_add(ray.or, vec_mult(hitrec.t - 0.00000001, ray.dir));
 	hitrec.normal = normalize(vec_sub_vec(hitrec.hitpoint, sphere.center));
 	hitrec.material = sphere.material;
 	return (hitrec);

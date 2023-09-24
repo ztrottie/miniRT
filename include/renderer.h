@@ -34,7 +34,7 @@ t_vec		init_vec(double x, double y, double z);
 int			get_color(t_color color);
 int			put_color(t_data *data, t_ray ray);
 void		ray_tracer(t_data *data);
-t_hitrec	ray_collisions(t_data *data, t_ray ray);
+t_hitrec	ray_collisions(t_data *data, t_ray ray, double max);
 t_hitrec	hit_light(t_data *data, t_hitrec hitrec);
 
 #endif
