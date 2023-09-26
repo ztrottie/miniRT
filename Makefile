@@ -118,4 +118,7 @@ brew:
         echo "$(COLOUR_YELLOW)Homebrew is not installed. Please follow the instructions of this website to install it: $(COLOUR_GREEN)https://brew.sh/index_fr$(COLOUR_END)"; \
     fi
 
+val: re
+	valgrind --leak-check=full ./$(NAME)
+
 .PHONY: all clean fclean re libmlx brew
