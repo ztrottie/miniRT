@@ -9,6 +9,7 @@ static t_hitrec	sphere_collisions(t_data *data, t_ray ray, double max)
 
 	i = 0;
 	closest_hit.t = INFINITY;
+	closest_hit.hit	= false;
 	if (data->objs.sphere)
 	{
 		sphere = data->objs.sphere;

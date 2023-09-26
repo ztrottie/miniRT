@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 
 	data.alight.material.bright = 0.2;
 
-	data.light.center = init_vec(-5, 10, 0);
+	data.light.center = init_vec(-5, 10, 10);
 	data.light.material.bright = 1;
 
 	ray_tracer(&data);
