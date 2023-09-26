@@ -7,35 +7,32 @@ int get_rgba(int r, int g, int b, int a)
 
 int	get_color(t_color color)
 {
-	int	r;
-	int g;
-	int b;
+	double	r;
+	double	g;
+	double	b;
 
-	r = color.x * 255;
-	g = color.y * 255;
-	b = color.z * 255;
+	r = color.x * 255.0;
+	g = color.y * 255.0;
+	b = color.z * 255.0;
 	return (get_rgba(r, g, b, 255));
 }
 
-int	put_color(t_ray ray)
+int	put_color(t_data *data, t_ray ray)
 {
-	t_vec	unit_direction;
-	t_vec	n;
-	t_point	sphere_center;
-	t_color	color;
-	double	t;
-	float	a;
+	t_hitrec	hitrec;
+	// t_color		color;
+	// float		a;
 
-	sphere_center = init_vec(0, 0, -1);
-	t = hit_sphere(sphere_center, 0.5, ray);
-	if (t > 0)
+	hitrec = ray_collisions(data, ray, T_MAX);
+	if (hitrec.hit)
 	{
-		n = normalize_vector(vec_sub_vec(ray_at(ray, t), sphere_center));
-		color = vec_mult(0.5, init_vec(n.x + 1, n.y + 1, n.z + 1));
-		return (get_color(color));
+		hitrec = hit_light(data, hitrec);
+		if (hitrec.hit)
+		{
+			return (get_color(hitrec.material.color));
+		}
 	}
-	unit_direction = normalize_vector(ray.dir);
-	a = 0.5*(unit_direction.y + 1);
-	color = vec_add(vec_mult((1 - a), init_vec(1, 1, 1)), vec_mult(a, init_vec(0.5, 0.7, 1)));
-	return (get_color(color));
+	// a = 0.5 * (ray.dir.y + 1);
+	// color = vec_add(vec_mult((1 - a), init_vec(1, 1, 1)), vec_mult(a, init_vec(0.5, 0.7, 1)));
+	return (get_color(init_vec(0, 0, 0)));
 }
