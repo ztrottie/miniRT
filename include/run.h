@@ -4,5 +4,6 @@
 # include "minirt.h"
 # include "maths.h"
 # include "renderer.h"
+# include "parsing.h"
 
 #endif

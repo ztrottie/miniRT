@@ -1,4 +1,5 @@
 #include "../../include/run.h"
+#include <fcntl.h>
 
 void	init_data(t_data *data)
 {
@@ -21,6 +22,9 @@ int	main(int argc, char **argv)
 	data.mlx = mlx_init(WIDTH, data.img_height, TITLE, false);
 	data.mlx_image = mlx_new_image(data.mlx, WIDTH, data.img_height);
 	data.objs.sphere = ft_calloc(4, sizeof(t_sphere));
+
+	data.fd = open("maps/map.rt", O_RDONLY);
+	data.map = split_line(&data);
 
 	data.nb_sphere = 4;
 	data.objs.sphere[0].center = init_vec(1, 0, -3);
