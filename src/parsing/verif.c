@@ -1,7 +1,8 @@
 #include "../../include/parsing.h"
-/// @brief check and put the correct values in the cylender struct
-/// @param obj  struct with a pointer to all the other shape's struct
-void	cylinder_verif(t_objs *obj)
+
+void	ambient_verif(t_alight *alight, char **map)
 {
-	
+	if (line_len(map) != 4)
+		map_error("Incorrect structure");
+	alight->material.bright = ft_atof(map[1]);
 }

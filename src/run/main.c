@@ -22,9 +22,21 @@ int	main(int argc, char **argv)
 	data.mlx = mlx_init(WIDTH, data.img_height, TITLE, false);
 	data.mlx_image = mlx_new_image(data.mlx, WIDTH, data.img_height);
 	data.objs.sphere = ft_calloc(4, sizeof(t_sphere));
+	data.fd = open("Scenes/testScene.rt", O_RDONLY);
+	ft_printf("fd: %d\n", data.fd);
 
-	data.fd = open("maps/map.rt", O_RDONLY);
-	data.map = split_line(&data);
+	//CHANGE
+		//if (check_if_rt(argv[1]))
+		//{
+		split_map(&data);
+		printf("allo\n");
+		int i = 0;
+		while (data.map[i])
+		{
+			ft_printf("%s\n", data.map[i]);
+			i++;
+		}
+		//}
 
 	data.nb_sphere = 4;
 	data.objs.sphere[0].center = init_vec(1, 0, -3);

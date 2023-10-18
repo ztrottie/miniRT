@@ -11,10 +11,10 @@
 # define CYLINDER	cy
 # define PLANE 		pl
 
-char	**split_line(t_data *data);
-void	map_error(char *message);
-int		line_len(char **splitted);
-void	check_map(char **map);
+void			split_map(t_data *data);
+int				map_error(char *message);
+int				line_len(char **splitted);
+int				check_if_rt(char *av);
 
 
 #endif
