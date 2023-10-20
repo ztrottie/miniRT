@@ -1,28 +1,5 @@
 #include "../../include/parsing.h"
 
-/// @brief read the file and split on each space
-/// @param data struct wich have the map and all the data
-/// @return the map but splitted on each space
-void	split_map(t_data *data)
-{
-	char	*new;
-	char	*line;
-	int		i;
-
-	line = "yessir miller";
-	new = NULL;
-	i = 0;
-	while (line)
-	{
-		line = get_next_line(data->fd);
-		data->map[i] = line;
-		printf("%s\n", line);
-		ft_free(line);
-		i++;
-	}
-	close(data->fd);
-}
-
 /// @brief get the len of a line in a double array
 /// @param splitted the splitted map
 /// @return the length of the line
@@ -36,7 +13,50 @@ int	line_len(char **splitted)
 	return (i);
 }
 
-/// @brief check the map to see if everything is valid
+/// @brief count the number of line with get_next_line
+/// @return the number of lines
+int	map_len(void)
+{
+	char	*gnl;
+	int		count;
+	int		fd;
+
+	gnl = "yessir miller";
+	count = 0;
+	fd = open_map(MAP);
+	while (gnl)
+	{
+		gnl = get_next_line(fd);
+		count++;
+	}
+	close(fd);
+	return (count);
+}
+
+/// @brief read the file and dup each line into data.map wich is a double array
+/// @param data struct will all the data
+void	read_map(t_data *data)
+{
+	char	*line;
+	int		i;
+	int		count;
+	int		fd;
+
+	line = NULL;
+	i = 0;
+	fd = open_map(MAP);
+	count = map_len();
+	data->map = malloc(sizeof(char *) * (count + 1));
+	while (i < count)
+	{
+		data->map[i] = ft_strdup(line);
+		line = get_next_line(fd);
+		i++;
+	}
+	close(fd);
+}
+
+/// @brief will check each component if its in the map
 /// @param map the map you need to check
 // void	check_map(char **map)
 // {

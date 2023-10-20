@@ -36,9 +36,10 @@ PARSING_DIR		=	src/parsing/
 
 RUN_SRCS		=	main.c
 
-PARSING_SRCS	=	check_map.c\
+PARSING_SRCS	=	get_map.c\
 					verif.c\
 					error.c\
+					parse_map.c\
 
 MATH_SRCS		=	basic_operation.c \
 					basic_vector_operation.c \

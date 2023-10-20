@@ -5,6 +5,8 @@
 		"parsing.h": "c",
 		"minirt.h": "c",
 		"run.h": "c",
-		"renderer.h": "c"
+		"renderer.h": "c",
+		"fcntl.h": "c",
+		"limits.h": "c"
 	}
 }

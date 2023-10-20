@@ -105,7 +105,6 @@ typedef struct s_data
 	t_objs		objs;
 	t_light		light;
 	t_alight	alight;
-	int			fd;
 	char		**map;
 	int			nb_sphere;
 	int			nb_plane;

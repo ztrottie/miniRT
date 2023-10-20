@@ -21,19 +21,15 @@ int	main(int argc, char **argv)
 	init_data(&data);
 	data.mlx = mlx_init(WIDTH, data.img_height, TITLE, false);
 	data.mlx_image = mlx_new_image(data.mlx, WIDTH, data.img_height);
-	data.objs.sphere = ft_calloc(4, sizeof(t_sphere));
-	data.fd = open("Scenes/testScene.rt", O_RDONLY);
-	ft_printf("fd: %d\n", data.fd);
-
+	data.objs.sphere = ft_calloc(4, sizeof(t_sphere));	
 	//CHANGE
+		read_map(&data);
 		//if (check_if_rt(argv[1]))
 		//{
-		split_map(&data);
-		printf("allo\n");
 		int i = 0;
-		while (data.map[i])
+		while (i < 7)
 		{
-			ft_printf("%s\n", data.map[i]);
+			ft_printf("%s", data.map[i]);
 			i++;
 		}
 		//}
