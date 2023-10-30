@@ -18,7 +18,12 @@ int				line_len(char **splitted);
 int				check_if_rt(char *av);
 void			read_map(t_data *data);
 int				open_map(char *path);
-void			check_map(char **map);
-void			run_map(char **map);
+void			check_map(char **map, t_data *data, int i);
+void			run_map(char **map, t_data *data);
+int				count_char(char *str, char target);
+int				check_rgb(int nb);
+void			sphere_verif(t_sphere *sphere, char **map, int i);
+
+
 
 #endif

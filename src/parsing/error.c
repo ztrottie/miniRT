@@ -24,6 +24,6 @@ int	open_map(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 1)
-		map_error("bad fd!");
+		map_error("bad fd");
 	return (fd);
 }

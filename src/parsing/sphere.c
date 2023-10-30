@@ -1,0 +1,35 @@
+#include "../../include/parsing.h"
+
+static void	sphere_pos(t_sphere *sphere, char **splitted)
+{
+	char	**temp_split;
+	temp_split = ft_split(splitted[1], ',');
+	sphere->center.x = ft_atof(temp_split[0]);
+	sphere->center.y = ft_atof(temp_split[1]);
+	sphere->center.z = ft_atof(temp_split[2]);
+	ft_x2free((void **)temp_split);
+}
+
+static void	sphere_rgb(t_sphere *sphere, char **splitted)
+{
+	char	**temp_split;
+
+	temp_split = ft_split(splitted[4], ',');
+	sphere->material.color.x = ft_atoi(temp_split[0]);
+	sphere->material.color.y = ft_atoi(temp_split[1]);
+	sphere->material.color.z = ft_atoi(temp_split[2]);
+	ft_x2free((void **)temp_split);
+}
+
+void	sphere_verif(t_sphere *sphere, char **map, int i)
+{
+	char	**splitted;
+
+	splitted = ft_split(map[i], ' ');
+	if (count_char(splitted[1], ',') == 2)
+		sphere_pos(sphere, splitted);
+	if (count_char(splitted[2], ',') == 0)
+		sphere->radius = ft_atof(splitted[2]) / 2;
+	if (count_char(splitted[3], ',') == 2 && count_char(splitted[3], '.') == 0 && check_rgb(ft_atoi(splitted[3])))
+		sphere_rgb(sphere, splitted);
+}

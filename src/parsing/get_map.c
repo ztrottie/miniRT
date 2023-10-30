@@ -28,6 +28,7 @@ int	map_len(void)
 	{
 		gnl = get_next_line(fd);
 		count++;
+		ft_free(gnl);
 	}
 	close(fd);
 	return (count);
@@ -58,24 +59,24 @@ void	read_map(t_data *data)
 
 /// @brief will check each component if its in the map
 /// @param map the map you need to check
-// void	check_map(char **map)
-// {
-// 	if (line_len(map) == 0)
-// 		return ;
-// 	else if (line_len(map) > 2)
-// 		map_error("Unknow object in file! Cmon bozo🤡");
-// 	else if (ft_strncmp(map[0], "cy", 2) == 0)
-// 		cylinder_verif();
-// 	else if (ft_strncmp(map[0], "pl", 2) == 0)
-// 		plane_verif();
-// 	else if (ft_strncmp(map[0], "sp", 2) == 0)
-// 		sphere_verif();
-// 	else if (ft_strncmp(map[0], 'C', 1) == 0)
-// 		cam_verif();
-// 	else if (ft_strncmp(map[0], 'A', 1) == 0)
-// 		ambient_verif();
-// 	else if (ft_strncmp(map[0], 'L', 1) == 0)
-// 		light_verif();
-// 	else
-// 		map_error("fix your shit bozo🧂");
-// }
+void	check_map(char **map, t_data *data, int i)
+{
+	if (line_len(map) == 0)
+		return ;
+	else if (line_len(map) > 2)
+		map_error("Unknow object in file! Cmon bozo🤡");
+	else if (ft_strncmp(map[0], "sp", 2) == 0) //add map[0] + skip_whitespace
+		sphere_verif(data->objs.sphere, map, i);
+	// else if (ft_strncmp(map[0], "cy", 2) == 0)
+	// 	cylinder_verif();
+	// else if (ft_strncmp(map[0], "pl", 2) == 0)
+	// 	plane_verif();
+	// else if (ft_strncmp(map[0], 'C', 1) == 0)
+	// 	cam_verif();
+	// else if (ft_strncmp(map[0], 'A', 1) == 0)
+	// 	ambient_verif();
+	// else if (ft_strncmp(map[0], 'L', 1) == 0)
+	// 	light_verif();
+	else
+		map_error("fix your shit bozo🧂");
+}
