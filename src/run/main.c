@@ -23,11 +23,12 @@ int	main(int argc, char **argv)
 	data.mlx_image = mlx_new_image(data.mlx, WIDTH, data.img_height);
 	data.objs.sphere = ft_calloc(4, sizeof(t_sphere));	
 	//CHANGE
-		read_map(&data);
+		run_map(data.map, &data);
+		ft_printf("allo\n");
 		//if (check_if_rt(argv[1]))
 		//{
 		int i = 0;
-		while (i < 7)
+		while (data.map && data.map[i] && i < 7)
 		{
 			ft_printf("%s", data.map[i]);
 			i++;

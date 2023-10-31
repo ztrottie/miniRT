@@ -9,7 +9,7 @@ else ifeq ($(shell uname -s),Darwin)
 endif
 
 CC				=	gcc
-CFLAGS			=	-Wextra -Werror -Wall -g
+CFLAGS			=	-Wextra -Werror -Wall -g -fsanitize=address
 
 COLOUR_GREEN	=	\033[0;32m
 COLOUR_YELLOW	=	\033[0;33m
@@ -38,6 +38,7 @@ RUN_SRCS		=	main.c
 
 PARSING_SRCS	=	get_map.c\
 					sphere.c\
+					cylinder.c\
 					error.c\
 					parse_map.c\
 					utils.c\

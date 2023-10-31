@@ -2,6 +2,7 @@
 # define PARSING_H
 
 # include "minirt.h"
+# include "maths.h"
 # include <fcntl.h>
 
 # define CAM 		C
@@ -22,7 +23,9 @@ void			check_map(char **map, t_data *data, int i);
 void			run_map(char **map, t_data *data);
 int				count_char(char *str, char target);
 int				check_rgb(int nb);
-void			sphere_verif(t_sphere *sphere, char **map, int i);
+void			sphere_verif(t_sphere *sp, char **map, int i);
+void			cylinder_verif(t_cylinder *cy, char **map, int i);
+
 
 
 

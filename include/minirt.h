@@ -61,6 +61,7 @@ typedef	struct	s_cylinder
 	t_point		center;
 	t_material	material;
 	double		radius;
+	double		height;
 	t_vec		*vec;
 }	t_cylinder;
 

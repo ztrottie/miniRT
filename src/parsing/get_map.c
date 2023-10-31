@@ -66,9 +66,9 @@ void	check_map(char **map, t_data *data, int i)
 	else if (line_len(map) > 2)
 		map_error("Unknow object in file! Cmon bozo🤡");
 	else if (ft_strncmp(map[0], "sp", 2) == 0) //add map[0] + skip_whitespace
-		sphere_verif(data->objs.sphere, map, i);
-	// else if (ft_strncmp(map[0], "cy", 2) == 0)
-	// 	cylinder_verif();
+		sphere_verif(&data->objs.sphere[data->nb_sphere++], map, i);
+	else if (ft_strncmp(map[0], "cy", 2) == 0)
+		cylinder_verif(&data->objs.cylinder[data->nb_cyl++], map, i);
 	// else if (ft_strncmp(map[0], "pl", 2) == 0)
 	// 	plane_verif();
 	// else if (ft_strncmp(map[0], 'C', 1) == 0)
