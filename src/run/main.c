@@ -12,28 +12,26 @@ void	init_data(t_data *data)
 	data->fov = 70;
 }
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
 	t_data data;
 
-	(void)argc;
-	(void)argv;
+	(void)ac;
 	init_data(&data);
 	data.mlx = mlx_init(WIDTH, data.img_height, TITLE, false);
 	data.mlx_image = mlx_new_image(data.mlx, WIDTH, data.img_height);
 	data.objs.sphere = ft_calloc(4, sizeof(t_sphere));	
 	//CHANGE
-		run_map(data.map, &data);
-		ft_printf("allo\n");
-		//if (check_if_rt(argv[1]))
-		//{
-		int i = 0;
-		while (data.map && data.map[i] && i < 7)
-		{
-			ft_printf("%s", data.map[i]);
-			i++;
-		}
-		//}
+	// if (ac == 1 || ac > 2)
+	// 	map_error("Invalid scene! Try Scenes/something.rt");
+	// else if (ac == 2)
+	run_map(&data, av[1]);
+	int i = 0;
+	while (data.map && data.map[i] && i < 7)
+	{
+		ft_printf("%s", data.map[i]);
+		i++;
+	}
 
 	data.nb_sphere = 4;
 	data.objs.sphere[0].center = init_vec(1, 0, -3);
