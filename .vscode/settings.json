@@ -10,6 +10,11 @@
 		"limits.h": "c",
 		"unistd.h": "c",
 		"stdio.h": "c",
-		"maths.h": "c"
+		"maths.h": "c",
+		"__bit_reference": "c",
+		"algorithm": "c",
+		"bitset": "c",
+		"chrono": "c",
+		"unordered_map": "c"
 	}
 }

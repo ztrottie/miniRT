@@ -18,7 +18,7 @@ int				map_error(char *message);
 //int				line_len(char **splitted);
 void			read_map(t_data *data, char *av);
 int				open_map(char *path);
-void			check_map(char **map, t_data *data, int i);
+void			check_map(t_data *data, int i);
 void			run_map(t_data *data, char *av);
 int				count_char(char *str, char target);
 int				check_rgb(int nb);
