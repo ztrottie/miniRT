@@ -27,6 +27,7 @@ int	put_color(t_data *data, t_ray ray)
 	if (hitrec.hit)
 	{
 		hitrec = hit_light(data, hitrec);
+		printf("%d\n", hitrec.hit);
 		if (hitrec.hit)
 		{
 			return (get_color(hitrec.material.color));

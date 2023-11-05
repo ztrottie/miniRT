@@ -38,14 +38,14 @@ int	main(int argc, char **argv)
 	data.objs[2].material.color = normalize(init_vec(0, 0, 255));
 	data.objs[2].intersect_function = &hit_sphere;
 
-	data.objs[3].center = init_vec(0, 1, -1);
+	data.objs[3].center = init_vec(0, -1, -1);
 	data.objs[3].material.color = normalize(init_vec(100, 160, 200));
 	data.objs[3].normal = init_vec(0, 1, 0);
 	data.objs[3].intersect_function = &hit_plane;
 
 	data.alight.material.bright = 0.2;
 
-	data.light.center = init_vec(4, 10, 10);
+	data.light.center = init_vec(0, 10, 0);
 	data.light.material.bright = 1;
 
 	ray_tracer(&data);
