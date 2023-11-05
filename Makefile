@@ -45,7 +45,8 @@ RENDERER_SRCS	=	renderer.c \
 					color.c \
 					hit_sphere.c \
 					ray_collision.c \
-					light_collision.c
+					light_collision.c \
+					hit_plane.c
 
 RUN_OBJS		=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
 MATH_OBJS		=	$(addprefix ${BIN_DIR}, ${MATH_SRCS:.c=.o})
