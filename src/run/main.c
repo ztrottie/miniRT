@@ -6,19 +6,18 @@ void	init_data(t_data *data)
 	double	aspect_ratio;
 
 	ft_bzero(data, sizeof (t_data));
-	ft_bzero(&data->objs.sphere, sizeof(t_sphere));
-	ft_bzero(&data->objs.cylinder->vec, sizeof(t_vec));
 	aspect_ratio = 16.0 / 9.0;
 	data->img_height = WIDTH / aspect_ratio;
 	data->cam = init_vec(0, 0, 12);
 	data->fov = 70;
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
 	t_data data;
 
-	(void)ac;
+	(void)argc;
+	(void)argv;
 	init_data(&data);
 	data.mlx = mlx_init(WIDTH, data.img_height, TITLE, false);
 	data.mlx_image = mlx_new_image(data.mlx, WIDTH, data.img_height);
@@ -35,10 +34,10 @@ int	main(int ac, char **av)
 	data.objs[1].material.color = normalize(init_vec(222, 8, 152));
 	data.objs[1].intersect_function = &hit_sphere;
 
-	data.objs[2].center = init_vec(-1, 0, -3);
-	data.objs[2].radius = 0.5;
+	data.objs[2].center = init_vec(0, 2, -5);
+	data.objs[2].normal = init_vec(0, 0, 1);
 	data.objs[2].material.color = normalize(init_vec(0, 0, 255));
-	data.objs[2].intersect_function = &hit_sphere;
+	data.objs[2].intersect_function = &hit_plane;
 
 	data.objs[3].center = init_vec(0, -1, -1);
 	data.objs[3].material.color = normalize(init_vec(100, 160, 200));
@@ -47,7 +46,7 @@ int	main(int ac, char **av)
 
 	data.alight.material.bright = 0.2;
 
-	data.light.center = init_vec(0, 10, 0);
+	data.light.center = init_vec(0, 0.75, 0);
 	data.light.material.bright = 1;
 
 	ray_tracer(&data);

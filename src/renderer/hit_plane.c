@@ -20,8 +20,8 @@ t_hitrec	hit_plane(t_objs plane, t_ray ray)
 	hitrec.hitpoint = vec_add(ray.or, vec_mult(hitrec.t - 1e-4, ray.dir));
 	hitrec.material = plane.material;
 	if (b < 0)
-		hitrec.normal = vec_mult(-1, plane.normal);
-	else
 		hitrec.normal = plane.normal;
+	else
+		hitrec.normal = vec_mult(-1, plane.normal);
 	return (hitrec);
 }
