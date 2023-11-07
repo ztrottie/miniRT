@@ -27,18 +27,16 @@ void	read_map(t_data *data, char *av)
 /// @param map the map you need to check
 void	check_map(t_data *data, int i)
 {
-	data->objs.sphere = ft_calloc(sizeof(t_sphere), 1);
-	data->objs.cylinder = ft_calloc(sizeof(t_cylinder), 1);
 	if (ft_x2strlen(data->map) == 0)
 		map_error("Your map is invalid dumbass🤡");
 	else if (ft_strncmp(data->map[0], "sp ", 3) == 0)
 	{
-		sphere_verif(&data->objs.sphere[data->nb_sphere++], data->map, i);
+		sphere_verif(data, data->map, i);
 		ft_printf("cbt\n");
 	}
 	else if (ft_strncmp(data->map[0], "cy ", 3) == 0)
 	{
-		cylinder_verif(&data->objs.cylinder[data->nb_cyl++], data->map, i);
+		cylinder_verif(data, data->map, i);
 		ft_printf("COCK\n");
 	}
 	// else

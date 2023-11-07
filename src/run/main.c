@@ -6,8 +6,6 @@ void	init_data(t_data *data)
 	double	aspect_ratio;
 
 	ft_bzero(data, sizeof (t_data));
-	ft_bzero(&data->objs.sphere, sizeof(t_sphere));
-	ft_bzero(&data->objs.cylinder->vec, sizeof(t_vec));
 	aspect_ratio = 16.0 / 9.0;
 	data->img_height = WIDTH / aspect_ratio;
 	data->cam = init_vec(0, 0, 12);
@@ -19,6 +17,7 @@ int	main(int ac, char **av)
 	t_data data;
 
 	(void)ac;
+	(void)av;
 	init_data(&data);
 	data.mlx = mlx_init(WIDTH, data.img_height, TITLE, false);
 	data.mlx_image = mlx_new_image(data.mlx, WIDTH, data.img_height);

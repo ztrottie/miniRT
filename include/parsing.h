@@ -22,8 +22,8 @@ void			check_map(t_data *data, int i);
 void			run_map(t_data *data, char *av);
 int				count_char(char *str, char target);
 int				check_rgb(int nb);
-void			sphere_verif(t_sphere *sp, char **map, int i);
-void			cylinder_verif(t_cylinder *cy, char **map, int i);
+void			sphere_verif(t_data *data, char **map, int i);
+void			cylinder_verif(t_data *data, char **map, int i);
 
 
 
