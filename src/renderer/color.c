@@ -23,10 +23,11 @@ int	put_color(t_data *data, t_ray ray)
 	// t_color		color;
 	// float		a;
 
-	hitrec = ray_collisions(data, ray, T_MAX);
+	hitrec = ray_collisions(data, ray);
 	if (hitrec.hit)
 	{
 		hitrec = hit_light(data, hitrec);
+		printf("%d\n", hitrec.hit);
 		if (hitrec.hit)
 		{
 			return (get_color(hitrec.material.color));
