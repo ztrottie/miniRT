@@ -3,6 +3,18 @@
 	"files.associations": {
 		"math.h": "c",
 		"parsing.h": "c",
-		"minirt.h": "c"
+		"minirt.h": "c",
+		"run.h": "c",
+		"renderer.h": "c",
+		"fcntl.h": "c",
+		"limits.h": "c",
+		"unistd.h": "c",
+		"stdio.h": "c",
+		"maths.h": "c",
+		"__bit_reference": "c",
+		"algorithm": "c",
+		"bitset": "c",
+		"chrono": "c",
+		"unordered_map": "c"
 	}
 }

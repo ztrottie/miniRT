@@ -9,7 +9,7 @@ else ifeq ($(shell uname -s),Darwin)
 endif
 
 CC				=	gcc
-CFLAGS			=	-Wextra -Werror -Wall -g
+CFLAGS			=	-Wextra -Werror -Wall -g #-fsanitize=address
 
 COLOUR_GREEN	=	\033[0;32m
 COLOUR_YELLOW	=	\033[0;33m
@@ -32,8 +32,16 @@ BIN_DIR			=	bin/
 RUN_DIR			=	src/run/
 MATH_DIR		=	src/maths/
 RENDERER_DIR	=	src/renderer/
+PARSING_DIR		=	src/parsing/
 
 RUN_SRCS		=	main.c
+
+PARSING_SRCS	=	get_map.c\
+					sphere.c\
+					cylinder.c\
+					error.c\
+					run_scene.c\
+					utils.c\
 
 MATH_SRCS		=	basic_operation.c \
 					basic_vector_operation.c \
@@ -48,13 +56,17 @@ RENDERER_SRCS	=	renderer.c \
 					light_collision.c \
 					hit_plane.c
 
-RUN_OBJS		=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
-MATH_OBJS		=	$(addprefix ${BIN_DIR}, ${MATH_SRCS:.c=.o})
-RENDERER_OBJS	=	$(addprefix $(BIN_DIR), ${RENDERER_SRCS:.c=.o})
+RUN_OBJS			=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
+PARSING_OBJS		=	$(addprefix ${BIN_DIR}, ${PARSING_SRCS:.c=.o})
+MATH_OBJS			=	$(addprefix ${BIN_DIR}, ${MATH_SRCS:.c=.o})
+RENDERER_OBJS		=	$(addprefix $(BIN_DIR), ${RENDERER_SRCS:.c=.o})
 
-OBJS			=	$(RUN_OBJS) $(MATH_OBJS) $(RENDERER_OBJS)
+OBJS			=	$(RUN_OBJS) $(MATH_OBJS) $(RENDERER_OBJS) $(PARSING_OBJS)
 
 ${BIN_DIR}%.o: ${RUN_DIR}%.c
+	@${CC} ${CFLAGS} -c $< -o $@
+
+${BIN_DIR}%.o: ${PARSING_DIR}%.c
 	@${CC} ${CFLAGS} -c $< -o $@
 
 ${BIN_DIR}%.o: ${MATH_DIR}%.c
