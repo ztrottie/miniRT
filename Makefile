@@ -54,7 +54,8 @@ RENDERER_SRCS	=	renderer.c \
 					hit_sphere.c \
 					ray_collision.c \
 					light_collision.c \
-					hit_plane.c
+					hit_plane.c \
+					hit_cylinder.c
 
 RUN_OBJS			=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
 # PARSING_OBJS		=	$(addprefix ${BIN_DIR}, ${PARSING_SRCS:.c=.o})

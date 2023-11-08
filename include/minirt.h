@@ -66,6 +66,7 @@ typedef struct s_objs
 	t_vec		normal;
 	t_material	material;
 	double		radius;
+	double		height;
 }	t_objs;
 
 typedef struct s_alight
