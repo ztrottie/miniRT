@@ -30,15 +30,9 @@ void	check_map(t_data *data, int i)
 	if (ft_x2strlen(data->map) == 0)
 		map_error("Your map is invalid dumbass🤡");
 	else if (ft_strncmp(data->map[0], "sp ", 3) == 0)
-	{
 		sphere_verif(data, data->map, i);
-		ft_printf("cbt\n");
-	}
 	else if (ft_strncmp(data->map[0], "cy ", 3) == 0)
-	{
 		cylinder_verif(data, data->map, i);
-		ft_printf("COCK\n");
-	}
-	// else
-	// 	map_error("fix your shit bozo🧂");
+	else
+		map_error("fix your shit bozo🧂");
 }

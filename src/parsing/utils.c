@@ -8,10 +8,7 @@ int	check_rgb(int nb)
 	if (nb >= 0 && nb <= 255)
 		return (1);
 	else
-	{
-		map_error("Not rgb value");
-		return (0);
-	}
+		return (map_error("Not rgb value"));
 }
 
 /// @brief get the len of a line in a double array
