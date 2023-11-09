@@ -2,8 +2,8 @@
 
 t_hitrec	hit_sphere(t_objs sphere, t_ray ray)
 {
-	t_hitrec	hitrec;
-	t_quad		quad;
+	t_hitrec		hitrec;
+	t_quad_sphere	quad;
 
 	quad.oc = vec_sub_vec(ray.or, sphere.center);
 	quad.a = sqr(vector_length(ray.dir));

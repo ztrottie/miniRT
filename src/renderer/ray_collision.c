@@ -13,9 +13,7 @@ t_hitrec	ray_collisions(t_data *data, t_ray ray)
 	{
 		hitrec = data->objs[i].intersect_function(data->objs[i], ray);
 		if (hitrec.hit && hitrec.t < closest_hit.t)
-		{
 			closest_hit = hitrec;
-		}
 		i++;
 	}
 	return (closest_hit);
