@@ -9,7 +9,7 @@ else ifeq ($(shell uname -s),Darwin)
 endif
 
 CC				=	gcc
-CFLAGS			=	-Wextra -Werror -Wall -g
+CFLAGS			=	-Wextra -Werror -Wall -g #-fsanitize=address
 
 COLOUR_GREEN	=	\033[0;32m
 COLOUR_YELLOW	=	\033[0;33m
@@ -36,11 +36,18 @@ PARSING_DIR		=	src/parsing/
 
 RUN_SRCS		=	main.c
 
+# PARSING_SRCS	=	get_map.c\
+# 					sphere.c\
+# 					cylinder.c\
+# 					error.c\
+# 					run_scene.c\
+# 					utils.c\
+
 MATH_SRCS		=	basic_operation.c \
 					basic_vector_operation.c \
 					dot_product.c \
-					quadratic_function.c \
-					basic_ray_operation.c
+					basic_ray_operation.c \
+					cross_product.c
 
 RENDERER_SRCS	=	renderer.c \
 					init_vectors.c \
@@ -58,6 +65,9 @@ OBJS				=	$(RUN_OBJS) $(MATH_OBJS) $(RENDERER_OBJS) $(PARSING_OBJS)
 
 ${BIN_DIR}%.o: ${RUN_DIR}%.c
 	@${CC} ${CFLAGS} -c $< -o $@
+
+# ${BIN_DIR}%.o: ${PARSING_DIR}%.c
+# 	@${CC} ${CFLAGS} -c $< -o $@
 
 ${BIN_DIR}%.o: ${MATH_DIR}%.c
 	@${CC} ${CFLAGS} -c $< -o $@
@@ -126,4 +136,10 @@ brew:
         echo "$(COLOUR_YELLOW)Homebrew is not installed. Please follow the instructions of this website to install it: $(COLOUR_GREEN)https://brew.sh/index_fr$(COLOUR_END)"; \
     fi
 
-.PHONY: all clean fclean re libmlx brew
+run: re
+	./miniRT
+
+val:
+	valgrind --leak-check=full ./$(NAME)
+
+.PHONY: all clean fclean re libmlx brew run

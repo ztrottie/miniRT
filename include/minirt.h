@@ -21,7 +21,8 @@
 # define T_MIN 0
 # define T_MAX INT_MAX
 
-# define MAX_ITER 10
+# define NB_REBOUND 1
+# define RAY_PER_PIXEL 1
 
 # define INVALID 0
 # define VALID 1
@@ -42,48 +43,56 @@ typedef struct s_ray
 	t_vec	dir;
 }	t_ray;
 
-typedef struct s_sphere
+typedef struct	s_material
 {
-	t_point	center;
 	t_color	color;
-	double	radius;
-}	t_sphere;
+	float	bright;
+}	t_material;
 
-typedef struct s_cyl
+typedef struct s_hitrec
 {
-	t_point center;
-	t_color	color;
-	double	diameter;
-}	t_cyl;
-
+	bool		hit;
+	t_point		hitpoint;
+	t_vec		normal;
+	t_material	material;
+	double		t;
+}	t_hitrec;
 
 typedef struct s_objs
 {
-	char	type;
+	int			type;
+	t_hitrec	(*intersect_function)(struct s_objs, struct s_ray);
+	t_point		center;
+	t_vec		normal;
+	t_material	material;
+	double		radius;
+	double		height;
 }	t_objs;
 
-
-typedef struct	s_viewport
+typedef struct s_alight
 {
-	double	vp_height;
-	double	vp_width;
-	t_vec	delta_v;
-	t_vec	delta_u;
-	t_vec	vp_v;
-	t_vec	vp_u;
-	t_vec	vp_center;
-	t_vec	upper_left;
-	t_vec	p00_loc;
-}	t_viewport;
+	t_material	material;
+}	t_alight;
+
+typedef struct s_light
+{
+	t_point		center;
+	t_material	material;
+}	t_light;
 
 typedef struct s_data
 {
 	mlx_t		*mlx;
 	int			fd;
 	mlx_image_t	*mlx_image;
+	t_objs		*objs;
+	t_light		light;
+	t_alight	alight;
+	int			nb_objs;
 	int			img_height;
-	double		foc_len;
+	double		fov;
 	t_vec		cam;
+	t_vec		cam_dir;
 }	t_data;
 
 
