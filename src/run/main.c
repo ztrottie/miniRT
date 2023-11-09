@@ -8,7 +8,8 @@ void	init_data(t_data *data)
 	ft_bzero(data, sizeof (t_data));
 	aspect_ratio = 16.0 / 9.0;
 	data->img_height = WIDTH / aspect_ratio;
-	data->cam = init_vec(0, 2, 12);
+	data->cam_dir = normalize(init_vec(0, 0, -1));
+	data->cam = init_vec(0, 2, 20);
 	data->fov = 70;
 }
 
@@ -26,13 +27,13 @@ int	main(int argc, char **argv)
 
 	data.objs[0].center = init_vec(0.60, 0, -2);
 	data.objs[0].radius = 1;
-	data.objs[0].material.color = normalize(init_vec(0, 255, 0));
+	data.objs[0].material.color = normalize(init_vec(0, 0, 255));
 	data.objs[0].intersect_function = &hit_sphere;
 
-	data.objs[1].center = init_vec(0, 0, -2);
+	data.objs[1].center = init_vec(0, 3, -2);
 	data.objs[1].radius = 0.5;
 	data.objs[1].material.color = normalize(init_vec(0, 255, 0));
-	data.objs[1].normal = init_vec(0, 1, 0);
+	data.objs[1].normal = normalize(init_vec(0, 0, 1));
 	data.objs[1].height = 3;
 	data.objs[1].intersect_function = &hit_cylinder;
 
@@ -48,17 +49,17 @@ int	main(int argc, char **argv)
 
 	data.objs[4].center = init_vec(-0.60, 0, -2);
 	data.objs[4].radius = 1;
-	data.objs[4].material.color = normalize(init_vec(0, 255, 0));
+	data.objs[4].material.color = normalize(init_vec(0, 0, 255));
 	data.objs[4].intersect_function = &hit_sphere;
 
 	data.objs[5].center = init_vec(0, 3.10, -2);
 	data.objs[5].radius = 0.60;
-	data.objs[5].material.color = normalize(init_vec(0, 255, 0));
+	data.objs[5].material.color = normalize(init_vec(0, 0, 255));
 	data.objs[5].intersect_function = &hit_sphere;
 
 	data.alight.material.bright = 0.2;
 
-	data.light.center = init_vec(10, 10, 10);
+	data.light.center = init_vec(0, 10, 20);
 	data.light.material.bright = 1;
 
 	ray_tracer(&data);

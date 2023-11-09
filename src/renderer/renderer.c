@@ -5,7 +5,7 @@ static t_vec	vp_upper_left(t_data *data, t_viewport *vp)
 	t_vec	v1;
 	t_vec	v2;
 
-	v1 = vec_sub_vec(data->cam, init_vec(0, 0, vp->focal_len));
+	v1 = vec_sub_vec(data->cam, vec_mult(vp->focal_len, data->cam_dir));
 	v2 = vec_sub_vec(v1, vec_div(2, vp->vp_u));
 	return (vec_sub_vec(v2, vec_div(2, vp->vp_v)));
 }
@@ -23,9 +23,9 @@ static void	init_viewport(t_data *data, t_viewport *vp)
 	vp->vp_height = 2.0;
 	vp->vp_width = vp->vp_height * (((double)WIDTH / data->img_height));
 	vp->focal_len = (vp->vp_width / 2) / tan(data->fov / 2);
-	vp->vp_center = vec_sub_vec(data->cam, init_vec(0, 0, vp->focal_len));
-	vp->vp_v = init_vec(vp->vp_width, 0, 0);
-	vp->vp_u = init_vec(0, -vp->vp_height, 0);
+	vp->vp_center = vec_sub_vec(data->cam, vec_mult(vp->focal_len, data->cam_dir));
+	vp->vp_v = vec_mult(vp->vp_width, data->cam_dir);
+	vp->vp_u = vec_mult(-vp->vp_height, data->cam_dir);
 	vp->delta_v = vec_div(WIDTH, vp->vp_v);
 	vp->delta_u = vec_div(data->img_height, vp->vp_u);
 	vp->upper_left = vp_upper_left(data, vp);
