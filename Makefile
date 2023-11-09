@@ -52,10 +52,12 @@ MATH_SRCS		=	basic_operation.c \
 
 RENDERER_SRCS	=	renderer.c \
 					init_vectors.c \
-					color.c
-
-PARSING_SRCS	=	check_map.c \
-					trim_map.c \
+					color.c\
+					hit_cylinder.c\
+					hit_plane.c\
+					hit_sphere.c\
+					light_collision.c\
+					ray_collision.c\
 
 RUN_OBJS			=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
 PARSING_OBJS		=	$(addprefix ${BIN_DIR}, ${PARSING_SRCS:.c=.o})

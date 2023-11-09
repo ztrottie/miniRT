@@ -8,16 +8,13 @@ int		quadratic_cylinder(t_quad_cyl *quad, t_objs cyl, t_ray ray, double *m)
 	quad->sqrtd = sqrt(quad->disc);
 	quad->t = (-quad->half_b - quad->sqrtd) / quad->a;
 	*m = dot_product(ray.dir, cyl.normal) * quad->t + dot_product(quad->x, cyl.normal);
-	//printf("t1 t: %f m: %f\n", quad->t, *m);
 	if ((quad->t <= T_MIN || quad->t >= T_MAX) || (*m < T_MIN || *m > cyl.height))
 	{
 		quad->t = (-quad->half_b + quad->sqrtd) / quad->a;
 		*m = dot_product(ray.dir, cyl.normal) * quad->t + dot_product(quad->x, cyl.normal);
-		//printf("t2 t: %f m: %f\n", quad->t, *m);
-		if ((quad->t <= T_MIN || quad->t >= T_MAX) || (*m < T_MIN || *m > cyl.height))
+		if ((quad->t < T_MIN || quad->t >= T_MAX) || (*m < T_MIN || *m > cyl.height))
 			return (INVALID);
 	}
-	//printf("tf t: %f m: %f\n", quad->t, *m);
 	return (VALID);
 }
 

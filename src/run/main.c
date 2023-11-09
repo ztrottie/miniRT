@@ -24,7 +24,8 @@ int	main(int argc, char **argv)
 	count_object(&data, argv[1]);
 	run_map(&data, argv[1]);
 
-
+	// data.objs = ft_calloc(6, sizeof(t_objs));
+	// data.nb_objs = 6;
 	// data.objs[0].center = init_vec(0.60, 0, -2);
 	// data.objs[0].radius = 1;
 	// data.objs[0].material.color = normalize(init_vec(0, 255, 0));
@@ -57,10 +58,10 @@ int	main(int argc, char **argv)
 	// data.objs[5].material.color = normalize(init_vec(0, 255, 0));
 	// data.objs[5].intersect_function = &hit_sphere;
 
-	data.alight.material.bright = 0.2;
+	// data.alight.material.bright = 0.2;
 
-	data.light.center = init_vec(0, 10, 20);
-	data.light.material.bright = 1;
+	// data.light.center = init_vec(0, 10, 20);
+	// data.light.material.bright = 1;
 
 	ray_tracer(&data);
 	mlx_image_to_window(data.mlx, data.mlx_image, 0, 0);

@@ -44,8 +44,8 @@ void	cylinder_verif(t_data *data, char **map, int i)
 			parse_pos(splitted, &data->objs[i]);
 		if (count_char(splitted[2], ',') == 2)
 			parse_vec(splitted, &data->objs[i]);
-		data->objs->radius = ft_atoi(splitted[3]) / 2;
-		data->objs->height = ft_atof(splitted[4]);
+		data->objs[i].radius = ft_atoi(splitted[3]) / 2;
+		data->objs[i].height = ft_atof(splitted[4]);
 		if (check_rgb(ft_atof(splitted[5])) && count_char(splitted[5], ',') == 2 && count_char(splitted[5], '.') == 0)
 			parse_color(splitted, &data->objs[i]);
 		data->objs[i].intersect_function = &hit_cylinder;

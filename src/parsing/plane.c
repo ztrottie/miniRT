@@ -46,6 +46,6 @@ void	plane_verif(t_data *data, char **map, int i)
 			parse_vec(splitted, &data->objs[i]);
 		if (check_rgb(ft_atof(splitted[3])) && count_char(splitted[3], ',') == 2 && count_char(splitted[3], '.') == 0)
 			parse_color(splitted, &data->objs[i]);
-		data->objs[i].intersect_function = &hit_cylinder;
+		data->objs[i].intersect_function = &hit_plane;
 	}
 }
