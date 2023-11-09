@@ -4,7 +4,6 @@
 # include "minirt.h"
 
 double		sqr(double a);
-t_hitrec	hit_sphere(t_objs sphere, t_ray ray);
 double		dot_product(t_vec v1, t_vec v2);
 t_vec		vec_div(double div, t_vec v1);
 t_vec		vec_mult(double mult, t_vec v1);

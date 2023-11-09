@@ -1,43 +1,52 @@
 #include "../../include/parsing.h"
 
-static void	sphere_pos(t_objs *obj, char **splitted)
+static void	parse_pos(char **map, t_objs *obj)
 {
-	char	**temp_split;
-	temp_split = ft_split(splitted[1], ',');
-	if (!temp_split)
-		map_error("Invalid map!");
-	obj->center.x = ft_atof(temp_split[0]);
-	obj->center.y = ft_atof(temp_split[1]);
-	obj->center.z = ft_atof(temp_split[2]);
+	char	**splitted;
+
+	splitted = ft_split(map[1], ',');
+
+	obj->center.x = ft_atof(splitted[0]);
+	obj->center.y = ft_atof(splitted[1]);
+	obj->center.z = ft_atof(splitted[2]);
 }
 
-static void	sphere_rgb(t_objs *obj, char **splitted)
+void	parse_vec(char **map, t_objs *obj)
 {
-	char	**temp_split;
+	char	**splitted;
 
-	temp_split = ft_split(splitted[3], ',');
-	if (!temp_split)
-		map_error("Invalid map!");
-	obj->material.color.x = ft_atoi(temp_split[0]);
-	obj->material.color.y = ft_atoi(temp_split[1]);
-	obj->material.color.z = ft_atoi(temp_split[2]);
-	obj->material.color = normalize(obj->material.color);
+	splitted = ft_split(map[2], ',');
+	obj->normal.x = ft_atof(splitted[0]);
+	obj->normal.y = ft_atof(splitted[1]);
+	obj->normal.z = ft_atof(splitted[2]);
+	obj->normal = normalize(obj->normal);
 }
 
+void	parse_color(char **map, t_objs *obj)
+{
+	char	**splitted;
+
+	splitted = ft_split(map[3], ',');
+	obj->material.color.x = ft_atof(splitted[0]);
+	obj->material.color.y = ft_atof(splitted[1]);
+	obj->material.color.z = ft_atof(splitted[2]);
+}
 void	sphere_verif(t_data *data, char **map, int i)
 {
 	char	**splitted;
+
 	splitted = ft_split(map[i], ' ');
+	printf("sp\n");
 	if (ft_strncmp(splitted[0], "sp", 2) == 0)
 	{
 		if (!splitted || !splitted[0] || !splitted[1])
 			map_error("Invalid map");
 		if (count_char(splitted[1], ',') == 2)
-			sphere_pos(data->objs, splitted);
+			parse_pos(splitted, &data->objs[i]);
 		if (count_char(splitted[2], ',') == 0)
-			data->objs->radius = ft_atof(splitted[2]) / 2;
+			data->objs[i].radius = ft_atof(splitted[2]) / 2;
 		if (count_char(splitted[3], ',') == 2 && count_char(splitted[3], '.') == 0 && check_rgb(ft_atoi(splitted[3])))
-			sphere_rgb(data->objs, splitted);
+			parse_color(splitted, &data->objs[i]);
 		data->objs[i].intersect_function = &hit_sphere;
 	}
 }

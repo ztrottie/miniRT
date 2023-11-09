@@ -2,6 +2,7 @@
 # define PARSING_H
 
 # include "minirt.h"
+# include "renderer.h"
 # include "maths.h"
 # include <fcntl.h>
 
@@ -24,5 +25,7 @@ int				count_char(char *str, char target);
 int				check_rgb(int nb);
 void			sphere_verif(t_data *data, char **map, int i);
 void			cylinder_verif(t_data *data, char **map, int i);
+void			plane_verif(t_data *data, char **map, int i);
+void			count_object(t_data *data, char *path);
 
 #endif
