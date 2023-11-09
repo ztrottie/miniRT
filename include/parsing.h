@@ -25,7 +25,4 @@ int				check_rgb(int nb);
 void			sphere_verif(t_data *data, char **map, int i);
 void			cylinder_verif(t_data *data, char **map, int i);
 
-
-
-
 #endif

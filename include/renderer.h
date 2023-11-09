@@ -4,7 +4,7 @@
 # include "minirt.h"
 # include "maths.h"
 
-typedef struct s_quad
+typedef struct s_quad_sphere
 {
 	double	a;
 	double	half_b;
@@ -12,7 +12,18 @@ typedef struct s_quad
 	double	disc;
 	double	sqrtd;
 	t_vec	oc;
-}	t_quad;
+}	t_quad_sphere;
+
+typedef struct s_quad_cyl
+{
+	double	a;
+	double	half_b;
+	double	c;
+	double	disc;
+	double	sqrtd;
+	double	t;
+	t_vec	x;
+}	t_quad_cyl;
 
 typedef struct	s_viewport
 {
@@ -37,5 +48,6 @@ void		ray_tracer(t_data *data);
 t_hitrec	ray_collisions(t_data *data, t_ray ray);
 t_hitrec	hit_light(t_data *data, t_hitrec hitrec);
 t_hitrec	hit_plane(t_objs plane, t_ray ray);
+t_hitrec	hit_cylinder(t_objs	cyl, t_ray ray);
 
 #endif

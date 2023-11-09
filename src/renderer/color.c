@@ -20,20 +20,19 @@ int	get_color(t_color color)
 int	put_color(t_data *data, t_ray ray)
 {
 	t_hitrec	hitrec;
-	// t_color		color;
-	// float		a;
+	t_color		color;
+	float		a;
 
 	hitrec = ray_collisions(data, ray);
 	if (hitrec.hit)
 	{
 		hitrec = hit_light(data, hitrec);
-		//printf("%d\n", hitrec.hit);
 		if (hitrec.hit)
 		{
 			return (get_color(hitrec.material.color));
 		}
 	}
-	// a = 0.5 * (ray.dir.y + 1);
-	// color = vec_add(vec_mult((1 - a), init_vec(1, 1, 1)), vec_mult(a, init_vec(0.5, 0.7, 1)));
-	return (get_color(init_vec(0, 0, 0)));
+	a = 0.5 * (ray.dir.y + 1);
+	color = vec_add(vec_mult((1 - a), init_vec(1, 1, 1)), vec_mult(a, init_vec(0.5, 0.7, 1)));
+	return (get_color(color));
 }
