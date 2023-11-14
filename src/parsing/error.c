@@ -11,14 +11,14 @@ int	map_error(char *message)
 /// @brief check if av has a .rt at the end
 /// @param av the main arguments wich would be a file
 /// @return the difference between the av and .ber if 0 then there is a .ber 
-// static int	check_if_rt(char *av)
-// {
-// 	av = ft_strrchr(av, '.');
-// 	if (!av)
-// 		return (0);
-// 	else
-// 		return (ft_strncmp(av, ".ber", 5));
-// }
+static int	check_if_rt(char *av)
+{
+	av = ft_strrchr(av, '.');
+	if (!av)
+		return (0);
+	else
+		return (ft_strncmp(av, ".ber", 5));
+}
 
 /// @brief open a file and return an error if necessary
 /// @param path the file you wish to open
@@ -28,9 +28,9 @@ int	open_map(char *path)
 	int	fd;
 
 	fd = open(path, O_RDONLY);
-	// if (fd < 0)
-	// 	map_error("Could not open the selected map!");
-	// else if (check_if_rt(path) != 0)
-	// 	map_error("Scene must finish with a .rt");
+	if (fd < 0)
+		map_error("Could not open the selected map!");
+	else if (check_if_rt(path) == 0)
+		map_error("Scene must finish with a .rt");
 	return (fd);
 }
