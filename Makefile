@@ -50,7 +50,9 @@ PARSING_SRCS	=	get_map.c\
 MATH_SRCS		=	basic_operation.c \
 					basic_vector_operation.c \
 					dot_product.c \
-					basic_ray_operation.c
+					basic_ray_operation.c \
+					cross_product.c \
+					matrices.c
 
 RENDERER_SRCS	=	renderer.c \
 					init_vectors.c \

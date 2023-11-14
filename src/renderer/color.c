@@ -23,7 +23,7 @@ int	put_color(t_data *data, t_ray ray)
 	t_color		color;
 	float		a;
 
-	hitrec = ray_collisions(data, ray);
+	hitrec = ray_collisions(data, ray, T_MAX);
 	if (hitrec.hit)
 	{
 		hitrec = hit_light(data, hitrec);

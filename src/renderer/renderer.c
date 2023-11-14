@@ -1,35 +1,40 @@
 #include "../../include/renderer.h"
 
-static t_vec	vp_upper_left(t_data *data, t_viewport *vp)
+static void	upperleft(t_data *data, t_viewport *vp)
 {
-	t_vec	v1;
-	t_vec	v2;
+	t_vec	left_point;
+	int		deg;
 
-	v1 = vec_sub_vec(data->cam, init_vec(0, 0, vp->focal_len));
-	v2 = vec_sub_vec(v1, vec_div(2, vp->vp_u));
-	return (vec_sub_vec(v2, vec_div(2, vp->vp_v)));
-}
-
-static t_vec	vp_p00_loc(t_viewport *vp)
-{
-	t_vec	v1;
-	
-	v1 = vec_add(vp->delta_u, vp->delta_v);
-	return (vec_add(vp->upper_left, vec_mult(0.5, v1)));
+	deg = 90;
+	left_point = ray_at(init_ray(vp->vp_center, rotation_y(data->cam_dir, 90)), vp->vp_width / 2);
+	if (data->cam_dir.z > 0)
+		deg *= -1;
+	vp->upper_left = ray_at(init_ray(left_point, rotation_x(data->cam_dir, deg)), vp->vp_height / 2);
+	vp->p00_loc = vec_add(vec_add(vp->upper_left, vec_div(2, vp->delta_v)), vec_div(2, vp->delta_u));
 }
 
 static void	init_viewport(t_data *data, t_viewport *vp)
 {
-	vp->vp_height = 2.0;
+	int 	deg;
+	t_vec	dir;
+
+	deg = -90;
+	vp->vp_height = 2.0; 
 	vp->vp_width = vp->vp_height * (((double)WIDTH / data->img_height));
 	vp->focal_len = (vp->vp_width / 2) / tan(data->fov / 2);
-	vp->vp_center = vec_sub_vec(data->cam, init_vec(0, 0, vp->focal_len));
-	vp->vp_v = init_vec(vp->vp_width, 0, 0);
-	vp->vp_u = init_vec(0, -vp->vp_height, 0);
-	vp->delta_v = vec_div(WIDTH, vp->vp_v);
-	vp->delta_u = vec_div(data->img_height, vp->vp_u);
-	vp->upper_left = vp_upper_left(data, vp);
-	vp->p00_loc = vp_p00_loc(vp);
+	vp->vp_center = ray_at(init_ray(data->cam, data->cam_dir), vp->focal_len);
+	dir.x = data->cam_dir.x;
+	dir.y = 0;
+	dir.z = data->cam_dir.z;
+	vp->vp_v = ray_at(init_ray(vp->vp_center, rotation_y(dir, -90)), vp->vp_width);
+	if (data->cam_dir.z > 0)
+		deg *= -1;
+	vp->vp_u = ray_at(init_ray(vp->vp_center, rotation_x(data->cam_dir, deg)), vp->vp_height);
+	vp->delta_v = vec_div(WIDTH, vec_sub_vec(vp->vp_v, vp->vp_center));
+	vp->delta_u = vec_div(data->img_height, vec_sub_vec(vp->vp_u, vp->vp_center));
+	upperleft(data, vp);
+	printf("%f, %f, %f\n", vp->vp_center.x, vp->vp_center.y, vp->vp_center.z);
+	printf("%f, %f, %f\n", vp->vp_v.x, vp->vp_v.y, vp->vp_v.z);
 }
 
 void	ray_tracer(t_data *data)
