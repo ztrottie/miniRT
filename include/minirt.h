@@ -91,6 +91,7 @@ typedef struct s_data
 	t_alight	alight;
 	char		type[NB_OBJECT][NB_OBJECT];
 	char		**map;
+	t_vec		cam_dir;
 	int			nb_objs;
 	int			img_height;
 	double		fov;

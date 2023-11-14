@@ -53,33 +53,17 @@ void	check_map(t_data *data, int i)
 	if (ft_x2strlen(data->map) == 0)
 		map_error("Your map is invalid dumbass🤡");
 	else if (ft_strncmp(data->map[i], "sp ", 3) == 0)
-	{
 		sphere_verif(data, data->map, i);
-	}
 	else if (ft_strncmp(data->map[i], "cy ", 3) == 0)
-	{
 		cylinder_verif(data, data->map, i);
-	}
 	else if (ft_strncmp(data->map[i], "pl ", 3) == 0)
-	{
 		plane_verif(data, data->map, i);
-	}
 	else if (ft_strncmp(data->map[i], "A ", 2) == 0)
-	{
 		ambient_verif(data, data->map, i);
-		printf("tu segfault ou\n");
-
-	}
 	else if (ft_strncmp(data->map[i], "L ", 2) == 0)
-	{
 		light_verif(data, data->map, i);
-
-	}
 	else if (ft_strncmp(data->map[i], "C ", 2) == 0)
-	{
 		camera_verif(data, data->map, i);
-
-	}
 	else
 		map_error("fix your shit bozo🧂");
 }

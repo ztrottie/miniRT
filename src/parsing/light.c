@@ -23,7 +23,8 @@ void	light_verif(t_data *data, char **map, int i)
 	{
 		if (count_char(splitted[1], ',') == 2)
 			parse_pos(splitted, &data->light);
-		data->light.material.bright = ft_atof(splitted[2]);
+		if (check_brightness(ft_atof(splitted[2])))
+			data->light.material.bright = ft_atof(splitted[2]);
 	}
 	ft_x2free((void **)splitted);
 }

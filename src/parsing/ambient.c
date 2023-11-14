@@ -22,9 +22,9 @@ void	ambient_verif(t_data *data, char **map, int i)
 	if (!splitted)
 		map_error("bad split!");
 	printf("A\n");
-	if (ft_strncmp(data->map[i], "A", 1) == 0)
+	if (ft_strncmp(data->map[0], "A", 1) == 0)
 	{
-		if (splitted[1])
+		if (check_brightness(ft_atof(splitted[1])))
 			data->alight.material.bright = ft_atof(splitted[1]);
 		if (check_rgb(ft_atoi(splitted[2])) && count_char(splitted[2], '.') == 0 && count_char(splitted[2], ',') == 2)
 			parse_rgb(map, &data->alight);

@@ -1,5 +1,13 @@
 #include "../../include/parsing.h"
 
+int	check_brightness(double brightness)
+{
+	if (brightness >= 0.0 && brightness <= 1.0)
+		return (1);
+	else
+		return (map_error("brightness must be in range [0.0,1.0]"));
+}
+
 char	**reset(char **env, char **env_cpy)
 {
 	int	i;

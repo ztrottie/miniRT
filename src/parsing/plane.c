@@ -9,7 +9,6 @@ static void	parse_pos(char **map, t_objs *obj)
 	obj->center.y = ft_atof(splitted[1]);
 	obj->center.z = ft_atof(splitted[2]);
 	ft_x2free((void **)splitted);
-	printf("pk\n");
 }
 
 static void	parse_vec(char **map, t_objs *obj)
@@ -51,7 +50,6 @@ void	plane_verif(t_data *data, char **map, int i)
 	{
 		if (splitted[1] && count_char(splitted[1], ',') == 2)
 			parse_pos(splitted, &data->objs[i]);
-		printf("ah ouin\n");
 		if (count_char(splitted[2], ',') == 2)
 			parse_vec(splitted, &data->objs[i]);
 		if (check_rgb(ft_atoi(splitted[3])) && count_char(splitted[3], ',') == 2 && count_char(splitted[3], '.') == 0)
