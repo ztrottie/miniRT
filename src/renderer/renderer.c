@@ -33,8 +33,6 @@ static void	init_viewport(t_data *data, t_viewport *vp)
 	vp->delta_v = vec_div(WIDTH, vec_sub_vec(vp->vp_v, vp->vp_center));
 	vp->delta_u = vec_div(data->img_height, vec_sub_vec(vp->vp_u, vp->vp_center));
 	upperleft(data, vp);
-	printf("%f, %f, %f\n", vp->vp_center.x, vp->vp_center.y, vp->vp_center.z);
-	printf("%f, %f, %f\n", vp->vp_v.x, vp->vp_v.y, vp->vp_v.z);
 }
 
 void	ray_tracer(t_data *data)

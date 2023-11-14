@@ -8,9 +8,6 @@ void	init_data(t_data *data)
 	ft_bzero(data, sizeof (t_data));
 	aspect_ratio = 16.0 / 9.0;
 	data->img_height = WIDTH / aspect_ratio;
-	data->cam_dir = normalize(init_vec(0, 0.05, -1));
-	data->cam = init_vec(0, 3, 100);
-	data->fov = 70;
 	ft_memmove(data->type[0], "cy", 3);
 	ft_memmove(data->type[1], "sp", 3);
 	ft_memmove(data->type[2], "pl", 3);

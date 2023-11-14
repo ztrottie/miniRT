@@ -97,7 +97,6 @@ typedef struct s_data
 	int			img_height;
 	double		fov;
 	t_vec		cam;
-	t_vec		cam_dir;
 }	t_data;
 
 
