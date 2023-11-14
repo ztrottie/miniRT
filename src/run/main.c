@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 
 	ray_tracer(&data);
 	mlx_image_to_window(data.mlx, data.mlx_image, 0, 0);
+	mlx_key_hook(data.mlx, movement_handler, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
 	return (0);

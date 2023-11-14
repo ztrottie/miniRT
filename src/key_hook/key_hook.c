@@ -1,6 +1,6 @@
-#include "../../../include/minirt.h"
+#include "../../include/run.h"
 
-void	ft_movement_handler(mlx_key_data_t keydata, void *param)
+void	movement_handler(mlx_key_data_t keydata, void *param)
 {
 	t_data	*data;
 
