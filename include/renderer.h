@@ -49,5 +49,6 @@ t_hitrec	ray_collisions(t_data *data, t_ray ray);
 t_hitrec	hit_light(t_data *data, t_hitrec hitrec);
 t_hitrec	hit_plane(t_objs plane, t_ray ray);
 t_hitrec	hit_cylinder(t_objs	cyl, t_ray ray);
+t_hitrec	hit_sphere(t_objs sphere, t_ray ray);
 
 #endif

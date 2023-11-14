@@ -36,12 +36,16 @@ PARSING_DIR		=	src/parsing/
 
 RUN_SRCS		=	main.c
 
-# PARSING_SRCS	=	get_map.c\
-# 					sphere.c\
-# 					cylinder.c\
-# 					error.c\
-# 					run_scene.c\
-# 					utils.c\
+PARSING_SRCS	=	get_map.c\
+					sphere.c\
+					cylinder.c\
+					plane.c\
+					error.c\
+					run_scene.c\
+					utils.c\
+					ambient.c\
+					light.c\
+					camera.c\
 
 MATH_SRCS		=	basic_operation.c \
 					basic_vector_operation.c \
@@ -58,17 +62,17 @@ RENDERER_SRCS	=	renderer.c \
 					hit_cylinder.c
 
 RUN_OBJS			=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
-# PARSING_OBJS		=	$(addprefix ${BIN_DIR}, ${PARSING_SRCS:.c=.o})
+PARSING_OBJS		=	$(addprefix ${BIN_DIR}, ${PARSING_SRCS:.c=.o})
 MATH_OBJS			=	$(addprefix ${BIN_DIR}, ${MATH_SRCS:.c=.o})
 RENDERER_OBJS		=	$(addprefix $(BIN_DIR), ${RENDERER_SRCS:.c=.o})
 
-OBJS			=	$(RUN_OBJS) $(MATH_OBJS) $(RENDERER_OBJS)
+OBJS			=	$(RUN_OBJS) $(MATH_OBJS) $(RENDERER_OBJS) $(PARSING_OBJS)
 
 ${BIN_DIR}%.o: ${RUN_DIR}%.c
 	@${CC} ${CFLAGS} -c $< -o $@
 
-# ${BIN_DIR}%.o: ${PARSING_DIR}%.c
-# 	@${CC} ${CFLAGS} -c $< -o $@
+${BIN_DIR}%.o: ${PARSING_DIR}%.c
+	@${CC} ${CFLAGS} -c $< -o $@
 
 ${BIN_DIR}%.o: ${MATH_DIR}%.c
 	@${CC} ${CFLAGS} -c $< -o $@
