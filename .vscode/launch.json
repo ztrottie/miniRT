@@ -8,7 +8,7 @@
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceFolder}/miniRT",
-        "args": ["/Users/zbeaumon/Documents/miniRT/Scenes/the_shlong_of_shrek.rt"],
+        "args": ["/Users/zbeaumon/Documents/miniRT/Scenes/all.rt"],
         "stopAtEntry": false,
         "cwd": "${fileDirname}",
         "environment": [],

@@ -14,9 +14,8 @@
 # define PLANE 		pl
 # define MAP		"Scenes/testScene.rt"
 
-int				map_len(char *av);
 int				map_error(char *message);
-//int				line_len(char **splitted);
+int 			map_len(char *av);
 void			read_map(t_data *data, char *av);
 int				open_map(char *path);
 void			check_map(t_data *data, int i);
@@ -26,6 +25,11 @@ int				check_rgb(int nb);
 void			sphere_verif(t_data *data, char **map, int i);
 void			cylinder_verif(t_data *data, char **map, int i);
 void			plane_verif(t_data *data, char **map, int i);
-void			count_object(t_data *data, char *path);
+void			ambient_verif(t_data *data, char **map, int i);
+void			light_verif(t_data *data, char **map, int i);
+void			camera_verif(t_data *data, char **map, int i);
+
+char			**reset(char **env, char **env_cpy);
+void			obj_increment(t_data *data);
 
 #endif

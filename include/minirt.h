@@ -27,6 +27,8 @@
 # define INVALID 0
 # define VALID 1
 
+# define NB_OBJECT 3
+
 typedef struct s_vec
 {
 	double	x;
@@ -87,6 +89,7 @@ typedef struct s_data
 	t_objs		*objs;
 	t_light		light;
 	t_alight	alight;
+	char		type[NB_OBJECT][NB_OBJECT];
 	char		**map;
 	int			nb_objs;
 	int			img_height;

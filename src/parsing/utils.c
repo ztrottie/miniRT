@@ -1,5 +1,25 @@
 #include "../../include/parsing.h"
 
+char	**reset(char **env, char **env_cpy)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	env = ft_calloc(ft_x2strlen(env_cpy) + 1, sizeof(char *));
+	while (env_cpy[j])
+	{
+		if (ft_strcmp(env_cpy[j], "\n"))
+		{
+			env[i] = ft_strdup(env_cpy[j]);
+			i++;
+		}
+		j++;
+	}
+	return (env);
+}
+
 /// @brief simply check if the number given is between rgb range
 /// @param nb the rgb value
 /// @return 1 if correct and 0 if there is an error

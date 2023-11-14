@@ -1,5 +1,28 @@
 #include "../../include/parsing.h"
 
+void	obj_increment(t_data *data)
+{
+	size_t	j;
+	int		i;
+	int		count;
+
+	i = 0;
+	j = 0;
+	count = 0;
+	while (data->map[i])
+	{
+		j = 0;
+		while (j < NB_OBJECT)
+		{
+			if (data->map[i] && data->type[j] && ft_strncmp(data->map[i], data->type[j], 2) == 0)
+				count++;
+			j++;
+		}
+		i++;
+	}
+	data->nb_objs = count;
+}
+
 /// @brief read the file and dup each line into data.map wich is a double array
 /// @param data struct will all the data
 void	read_map(t_data *data, char *av)
@@ -30,25 +53,33 @@ void	check_map(t_data *data, int i)
 	if (ft_x2strlen(data->map) == 0)
 		map_error("Your map is invalid dumbass🤡");
 	else if (ft_strncmp(data->map[i], "sp ", 3) == 0)
+	{
 		sphere_verif(data, data->map, i);
+	}
 	else if (ft_strncmp(data->map[i], "cy ", 3) == 0)
+	{
 		cylinder_verif(data, data->map, i);
+	}
 	else if (ft_strncmp(data->map[i], "pl ", 3) == 0)
+	{
 		plane_verif(data, data->map, i);
-	else if (ft_strcmp(data->map[i], "\n"))
-		return ;
+	}
+	else if (ft_strncmp(data->map[i], "A ", 2) == 0)
+	{
+		ambient_verif(data, data->map, i);
+		printf("tu segfault ou\n");
+
+	}
+	else if (ft_strncmp(data->map[i], "L ", 2) == 0)
+	{
+		light_verif(data, data->map, i);
+
+	}
+	else if (ft_strncmp(data->map[i], "C ", 2) == 0)
+	{
+		camera_verif(data, data->map, i);
+
+	}
 	else
 		map_error("fix your shit bozo🧂");
-}
-
-void	count_object(t_data *data, char *path)
-{
-	int	fd;
-
-	fd = open_map(path);
-	data->nb_objs = count_next_line(fd);
-	data->objs = ft_calloc(data->nb_objs, sizeof(t_objs));
-	if (!data->objs)
-		map_error("Malloc fail");
-	close(fd);
 }

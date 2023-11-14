@@ -10,6 +10,9 @@ void	init_data(t_data *data)
 	data->img_height = WIDTH / aspect_ratio;
 	data->cam = init_vec(0, 2, 12);
 	data->fov = 70;
+	ft_memmove(data->type[0], "cy", 3);
+	ft_memmove(data->type[1], "sp", 3);
+	ft_memmove(data->type[2], "pl", 3);
 }
 
 int	main(int argc, char **argv)
@@ -17,10 +20,12 @@ int	main(int argc, char **argv)
 	t_data data;
 
 	(void)argc;
+	(void)argv;
 	init_data(&data);
 	data.mlx = mlx_init(WIDTH, data.img_height, TITLE, false);
 	data.mlx_image = mlx_new_image(data.mlx, WIDTH, data.img_height);
-	count_object(&data, argv[1]);
+	// data.nb_objs = 6;
+	// data.objs = ft_calloc(data.nb_objs, sizeof(t_objs));
 	run_map(&data, argv[1]);
 
 
@@ -56,10 +61,10 @@ int	main(int argc, char **argv)
 	// data.objs[5].material.color = normalize(init_vec(0, 255, 0));
 	// data.objs[5].intersect_function = &hit_sphere;
 
-	data.alight.material.bright = 0.2;
+	//data.alight.material.bright = 0.2;
 
-	data.light.center = init_vec(10, 10, 10);
-	data.light.material.bright = 1;
+	// data.light.center = init_vec(-40, 50, 0);
+	// data.light.material.bright = 0.6;
 
 	ray_tracer(&data);
 	mlx_image_to_window(data.mlx, data.mlx_image, 0, 0);
