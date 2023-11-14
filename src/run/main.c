@@ -8,8 +8,8 @@ void	init_data(t_data *data)
 	ft_bzero(data, sizeof (t_data));
 	aspect_ratio = 16.0 / 9.0;
 	data->img_height = WIDTH / aspect_ratio;
-	data->cam_dir = normalize(init_vec(0, 0, -1));
-	data->cam = init_vec(0, 2, 20);
+	data->cam_dir = normalize(init_vec(0, 0.05, -1));
+	data->cam = init_vec(0, 3, 100);
 	data->fov = 70;
 }
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	data.objs[3].normal = init_vec(0, 1, 0);
 	data.objs[3].intersect_function = &hit_plane;
 
-	data.objs[4].center = init_vec(-0.60, 0, -2);
+	data.objs[4].center = init_vec(0, 0, -30);
 	data.objs[4].radius = 1;
 	data.objs[4].material.color = normalize(init_vec(0, 0, 255));
 	data.objs[4].intersect_function = &hit_sphere;

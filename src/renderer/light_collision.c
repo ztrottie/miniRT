@@ -9,7 +9,7 @@ t_hitrec	hit_light(t_data *data, t_hitrec hitrec)
 
 	ray_direction = normalize(vec_sub_vec(data->light.center, hitrec.hitpoint));
 	ray = init_ray(hitrec.hitpoint, ray_direction);
-	hitrec2 = ray_collisions(data, ray);
+	hitrec2 = ray_collisions(data, ray, vec_dist(hitrec.hitpoint, data->light.center));
 	if (hitrec2.hit)
 		hitrec.material.color = vec_mult(data->alight.material.bright, hitrec.material.color);
 	else

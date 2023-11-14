@@ -55,13 +55,14 @@ typedef struct s_hitrec
 	t_point		hitpoint;
 	t_vec		normal;
 	t_material	material;
+	int			type;
 	double		t;
 }	t_hitrec;
 
 typedef struct s_objs
 {
 	int			type;
-	t_hitrec	(*intersect_function)(struct s_objs, struct s_ray);
+	t_hitrec	(*intersect_function)(struct s_objs, struct s_ray, int t_max);
 	t_point		center;
 	t_vec		normal;
 	t_material	material;
