@@ -1,7 +1,7 @@
 #include "../../include/run.h"
 #include <fcntl.h>
 
-void	init_data(t_data *data)
+static void	init_data(t_data *data)
 {
 	double	aspect_ratio;
 
@@ -24,8 +24,9 @@ int	main(int argc, char **argv)
 		map_error("Select a map in Scenes/something.rt");
 	else
 		run_map(&data, argv[1]);
-
-	ray_tracer(&data);
+	printf("x:%f y:%f z:%f\n", data.cam_dir.x, data.cam_dir.y, data.cam_dir.z);
+	init_viewport(&data);
+	ray_loop(&data);
 	mlx_image_to_window(data.mlx, data.mlx_image, 0, 0);
 	mlx_key_hook(data.mlx, movement_handler, &data);
 	mlx_loop(data.mlx);

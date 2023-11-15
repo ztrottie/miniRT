@@ -51,6 +51,18 @@ typedef struct	s_material
 	float	bright;
 }	t_material;
 
+
+typedef struct s_objs
+{
+	int					type;
+	struct s_hitrec		(*intersect_function)(struct s_objs*, struct s_ray, int t_max);
+	t_point				center;
+	t_vec				normal;
+	t_material			material;
+	double				radius;
+	double				height;
+}	t_objs;
+
 typedef struct s_hitrec
 {
 	bool		hit;
@@ -59,18 +71,8 @@ typedef struct s_hitrec
 	t_material	material;
 	int			type;
 	double		t;
+	t_objs		*inst;
 }	t_hitrec;
-
-typedef struct s_objs
-{
-	int			type;
-	t_hitrec	(*intersect_function)(struct s_objs, struct s_ray, int t_max);
-	t_point		center;
-	t_vec		normal;
-	t_material	material;
-	double		radius;
-	double		height;
-}	t_objs;
 
 typedef struct s_alight
 {
@@ -83,20 +85,36 @@ typedef struct s_light
 	t_material	material;
 }	t_light;
 
+typedef struct	s_viewport
+{
+	double	vp_height;
+	double	vp_width;
+	double	focal_len;
+	t_vec	delta_v;
+	t_vec	delta_u;
+	t_vec	vp_v;
+	t_vec	vp_u;
+	t_vec	vp_center;
+	t_vec	upper_left;
+	t_vec	p00_loc;
+}	t_viewport;
+
 typedef struct s_data
 {
 	mlx_t		*mlx;
 	mlx_image_t	*mlx_image;
+	t_viewport	vp;
 	t_objs		*objs;
 	t_light		light;
 	t_alight	alight;
+	t_vec		cam_dir;
+	t_vec		cam;
 	char		type[NB_OBJECT][NB_OBJECT];
 	char		**map;
-	t_vec		cam_dir;
+	t_objs		*selected;
 	int			nb_objs;
 	int			img_height;
 	double		fov;
-	t_vec		cam;
 }	t_data;
 
 

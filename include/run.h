@@ -7,5 +7,6 @@
 # include "parsing.h"
 
 void	movement_handler(mlx_key_data_t keydata, void *param);
+void	init_viewport(t_data *data);
 
 #endif
