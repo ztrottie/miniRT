@@ -30,10 +30,10 @@ void	sphere_verif(t_data *data, char **map, int i)
 	if (!splitted)
 		map_error("bad split!");
 	printf("sp\n");
+	if (!splitted[0] || !splitted[1] || !splitted[2] || !splitted[3])
+		map_error("Missing arguments");
 	if (ft_strncmp(splitted[0], "sp", 2) == 0)
 	{
-		if (!splitted || !splitted[0] || !splitted[1])
-			map_error("Invalid map");
 		if (count_char(splitted[1], ',') == 2)
 			parse_pos(splitted, &data->objs[i]);
 		if (count_char(splitted[2], ',') == 0)

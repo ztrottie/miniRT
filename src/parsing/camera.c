@@ -35,6 +35,8 @@ void	camera_verif(t_data *data, char **map, int i)
 	if (!splitted)
 		map_error("bad split!");
 	printf("C\n");
+	if (!splitted[0] || !splitted[1] || !splitted[2] || !splitted[3])
+		map_error("Missing arguments");
 	if (ft_strncmp(splitted[0], "C", 1) == 0)
 	{
 		if (count_char(splitted[1], ',') == 2)

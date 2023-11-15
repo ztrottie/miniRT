@@ -34,3 +34,23 @@ int	open_map(char *path)
 		map_error("Scene must finish with a .rt");
 	return (fd);
 }
+
+bool	check_if_obj(t_data *data, char *line)
+{
+	int	j;
+	int	i;
+
+	j = 0;
+	i = 0;
+	while (line[i] != ' ')
+	{
+		j = 0;
+		while (j < NB_OBJECT)
+		{
+			if (line[i] && data->type[j] && ft_strncmp(line, data->type[j], 2) == 0)
+				return (true);
+			j++;
+		}
+	}
+	return (false);
+}

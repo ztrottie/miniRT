@@ -39,19 +39,6 @@ int	check_rgb(int nb)
 		return (map_error("Not rgb value"));
 }
 
-/// @brief get the len of a line in a double array
-/// @param splitted the splitted map
-/// @return the length of the line
-int	line_len(char **splitted)
-{
-	int	i;
-
-	i = 0;
-	while(splitted[i])
-		i++;
-	return (i);
-}
-
 /// @brief count the number of line with get_next_line
 /// @return the number of lines
 int	map_len(char *av)
@@ -63,4 +50,21 @@ int	map_len(char *av)
 	count = count_next_line(fd);
 	close(fd);
 	return (count);
+}
+
+void	find_coma(char **line)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (line[i])
+	{
+		j = 0;
+		while (line[i][j] && line[i][j] != ',')
+			j++;
+		if (line[i][j] == ',' && line[i][j - 1] == ' ')
+			map_error("No space allowed");
+		i++;
+	}
 }
