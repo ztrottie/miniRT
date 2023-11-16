@@ -103,7 +103,8 @@ typedef struct s_data
 {
 	mlx_t		*mlx;
 	mlx_image_t	*mlx_image;
-	t_viewport	vp;
+	t_viewport	base_vp;
+	t_viewport	final_vp;
 	t_objs		*objs;
 	t_light		light;
 	t_alight	alight;
