@@ -9,13 +9,15 @@ void	obj_increment(t_data *data)
 	i = 0;
 	j = 0;
 	count = 0;
-	while (data->map[i])
+	while (data->map && data->map[i])
 	{
 		j = 0;
 		while (j < NB_OBJECT)
 		{
 			if (data->map[i] && data->type[j] && ft_strncmp(data->map[i], data->type[j], 2) == 0)
+			{
 				count++;
+			}
 			j++;
 		}
 		i++;
@@ -38,7 +40,7 @@ void	run_map(t_data *data, char *av)
 		map_error("Malloc fail");
 	while (i < count)
 	{
-		check_map(data , i);
+		check_map(data, i);
 		i++;
 	}
 }

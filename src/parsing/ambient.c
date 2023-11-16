@@ -21,10 +21,9 @@ void	ambient_verif(t_data *data, char **map, int i)
 	splitted = ft_split(map[i], ' ');
 	if (!splitted)
 		map_error("bad split!");
-	printf("A\n");
 	if (!splitted[0] || !splitted[1] || !splitted[2])
 		map_error("Missing arguments");
-	if (ft_strncmp(data->map[0], "A", 1) == 0)
+	if (ft_strncmp(splitted[0], "A", 2) == 0)
 	{
 		if (check_brightness(ft_atof(splitted[1])))
 			data->alight.material.bright = ft_atof(splitted[1]);

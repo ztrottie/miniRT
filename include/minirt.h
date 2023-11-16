@@ -117,6 +117,7 @@ typedef struct s_data
 	t_objs		*selected;
 	int			nb_objs;
 	int			img_height;
+	int			index;
 	double		fov;
 }	t_data;
 
