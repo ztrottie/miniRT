@@ -110,6 +110,8 @@ typedef struct s_data
 	t_alight	alight;
 	t_vec		cam_dir;
 	t_vec		cam;
+	double		pitch;
+	double		yaw;
 	char		type[NB_OBJECT][NB_OBJECT];
 	char		**map;
 	t_objs		*selected;

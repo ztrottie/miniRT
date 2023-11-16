@@ -48,6 +48,7 @@ t_hitrec	hit_light(t_data *data, t_hitrec hitrec);
 t_hitrec	hit_plane(t_objs *plane, t_ray ray, int t_max);
 t_hitrec	hit_cylinder(t_objs	*cyl, t_ray ray, int t_max);
 t_hitrec	hit_sphere(t_objs *sphere, t_ray ray, int t_max);
+void		final_viewport(t_data *data);
 
 
 #endif
