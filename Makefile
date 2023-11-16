@@ -35,7 +35,9 @@ RENDERER_DIR	=	src/renderer/
 PARSING_DIR		=	src/parsing/
 KEY_DIR			=	src/key_hook/
 
-RUN_SRCS		=	main.c
+RUN_SRCS		=	main.c \
+					init_viewport.c \
+					final_viewport.c
 
 PARSING_SRCS	=	get_map.c\
 					sphere.c\
