@@ -23,7 +23,6 @@ static void	parse_vec(char **map, t_data *data)
 	data->cam_dir.x = ft_atof(splitted[0]);
 	data->cam_dir.y = ft_atof(splitted[1]);
 	data->cam_dir.z = ft_atof(splitted[2]);
-	data->cam_dir = normalize(data->cam_dir);
 	ft_x2free((void **)splitted);
 }
 
