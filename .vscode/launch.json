@@ -9,7 +9,7 @@
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceFolder}/miniRT",
-        "args": ["/Users/ztrottie/Documents/miniRT/Scenes/test.rt"],
+        "args": ["/Users/zbeaumon/Documents/miniRT/Scenes/testScene.rt"],
         "stopAtEntry": false,
         "cwd": "${fileDirname}",
         "environment": [],

@@ -22,12 +22,14 @@ void	ambient_verif(t_data *data, char **map, int i)
 	if (!splitted)
 		map_error("bad split!");
 	printf("A\n");
+	if (!splitted[0] || !splitted[1] || !splitted[2])
+		map_error("Missing arguments");
 	if (ft_strncmp(data->map[0], "A", 1) == 0)
 	{
 		if (check_brightness(ft_atof(splitted[1])))
 			data->alight.material.bright = ft_atof(splitted[1]);
 		if (check_rgb(ft_atoi(splitted[2])) && count_char(splitted[2], '.') == 0 && count_char(splitted[2], ',') == 2)
-			parse_rgb(map, &data->alight);
+			parse_rgb(map, &data->alight);//need to add colors to ambient light
 	}
 	ft_x2free((void **)splitted);
 }

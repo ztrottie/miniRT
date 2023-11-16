@@ -32,6 +32,8 @@ void			camera_verif(t_data *data, char **map, int i);
 char			**reset(char **env, char **env_cpy);
 void			obj_increment(t_data *data);
 int				check_brightness(double brightness);
+void			find_coma(char **line);
+bool			check_if_obj(t_data *data, char *line);
 
 
 #endif

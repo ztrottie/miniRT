@@ -29,7 +29,6 @@ static void	parse_color(char **map, t_objs *obj)
 	char	**splitted;
 
 	splitted = ft_split(map[3], ',');
-
 	obj->material.color.x = ft_atoi(splitted[0]);
 	obj->material.color.y = ft_atoi(splitted[1]);	
 	obj->material.color.z = ft_atoi(splitted[2]);
@@ -46,13 +45,15 @@ void	plane_verif(t_data *data, char **map, int i)
 	if (!splitted)
 		map_error("bad split!");
 	printf("pl\n");
+	if (!splitted[0] || !splitted[1] || !splitted[2] || !splitted[3])
+		map_error("Missing arguments");
 	if (ft_strncmp(splitted[0], "pl", 2) == 0)
 	{
 		if (splitted[1] && count_char(splitted[1], ',') == 2)
 			parse_pos(splitted, &data->objs[i]);
-		if (count_char(splitted[2], ',') == 2)
+		if (splitted[2] && count_char(splitted[2], ',') == 2)
 			parse_vec(splitted, &data->objs[i]);
-		if (check_rgb(ft_atoi(splitted[3])) && count_char(splitted[3], ',') == 2 && count_char(splitted[3], '.') == 0)
+		if (splitted[3] && check_rgb(ft_atoi(splitted[3])) && count_char(splitted[3], ',') == 2 && count_char(splitted[3], '.') == 0)
 			parse_color(splitted, &data->objs[i]);
 		data->objs[i].intersect_function = &hit_plane;
 	}
