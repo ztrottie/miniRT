@@ -25,10 +25,9 @@ int	main(int argc, char **argv)
 	else
 		run_map(&data, argv[1]);
 	init_viewport(&data);
-	final_viewport(&data);
-	ray_loop(&data);
-	mlx_image_to_window(data.mlx, data.mlx_image, 0, 0);
+	init_rotations(&data);
 	mlx_key_hook(data.mlx, movement_handler, &data);
+	ray_loop(&data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
 	return (0);

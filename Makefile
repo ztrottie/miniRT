@@ -37,7 +37,7 @@ KEY_DIR			=	src/key_hook/
 
 RUN_SRCS		=	main.c \
 					init_viewport.c \
-					final_viewport.c
+					init_rotations.c
 
 PARSING_SRCS	=	get_map.c\
 					sphere.c\
@@ -64,7 +64,8 @@ RENDERER_SRCS	=	renderer.c \
 					ray_collision.c \
 					light_collision.c \
 					hit_plane.c \
-					hit_cylinder.c
+					hit_cylinder.c \
+					final_viewport.c
 
 KEY_SRCS		=	key_hook.c
 

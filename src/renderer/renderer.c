@@ -16,6 +16,7 @@ void	ray_loop(t_data *data)
 	t_rend		rend;
 	t_viewport	*vp;
 
+	final_viewport(data);
 	vp = &data->final_vp;
 	rend.j = 0;
 	while (rend.j < data->img_height)
@@ -29,4 +30,5 @@ void	ray_loop(t_data *data)
 		}
 		rend.j++;
 	}
+	mlx_image_to_window(data->mlx, data->mlx_image, 0, 0);
 }
