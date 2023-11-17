@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 	init_viewport(&data);
 	init_rotations(&data);
 	mlx_key_hook(data.mlx, movement_handler, &data);
+	mlx_mouse_hook(data.mlx, mouse_hook, &data);
 	ray_loop(&data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);

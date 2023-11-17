@@ -99,6 +99,14 @@ typedef struct	s_viewport
 	t_vec	p00_loc;
 }	t_viewport;
 
+typedef struct s_selected
+{
+	int		x;
+	int		y;
+	int		z;
+	t_objs	*objs;
+}	t_selected;
+
 typedef struct s_data
 {
 	mlx_t		*mlx;
@@ -110,6 +118,9 @@ typedef struct s_data
 	t_alight	alight;
 	t_vec		cam_dir;
 	t_vec		cam;
+	t_vec		dir_right;
+	t_vec		dir_down;
+	t_vec		dir_foward;
 	double		pitch;
 	double		yaw;
 	char		type[NB_OBJECT][NB_OBJECT];
@@ -118,9 +129,11 @@ typedef struct s_data
 	int			count_cam;
 	int			count_light;
 	int			count_alight;
+	t_selected	selected;
 	int			nb_objs;
 	int			img_height;
 	int			index;
+	bool		rot_mod;
 	double		fov;
 }	t_data;
 

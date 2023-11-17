@@ -33,7 +33,7 @@ RUN_DIR			=	src/run/
 MATH_DIR		=	src/maths/
 RENDERER_DIR	=	src/renderer/
 PARSING_DIR		=	src/parsing/
-KEY_DIR			=	src/key_hook/
+KEY_DIR			=	src/movement/
 
 RUN_SRCS		=	main.c \
 					init_viewport.c \
@@ -67,7 +67,8 @@ RENDERER_SRCS	=	renderer.c \
 					hit_cylinder.c \
 					final_viewport.c
 
-KEY_SRCS		=	key_hook.c
+KEY_SRCS		=	key_hook.c \
+					mouse_hook.c
 
 RUN_OBJS			=	$(addprefix ${BIN_DIR}, ${RUN_SRCS:.c=.o})
 PARSING_OBJS		=	$(addprefix ${BIN_DIR}, ${PARSING_SRCS:.c=.o})
