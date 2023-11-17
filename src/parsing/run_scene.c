@@ -15,14 +15,18 @@ void	obj_increment(t_data *data)
 		while (j < NB_OBJECT)
 		{
 			if (data->map[i] && data->type[j] && ft_strncmp(data->map[i], data->type[j], 2) == 0)
-			{
 				count++;
-			}
 			j++;
 		}
 		i++;
 	}
 	data->nb_objs = count;
+}
+
+void	count_not_objs(t_data *data)
+{
+	if (data->count_light != 1 || data->count_cam != 1 || data->count_alight != 1)
+		map_error("Cannot have more than one cam light or ambient light");
 }
 
 void	run_map(t_data *data, char *av)
@@ -43,4 +47,5 @@ void	run_map(t_data *data, char *av)
 		check_map(data, i);
 		i++;
 	}
+	count_not_objs(data);
 }

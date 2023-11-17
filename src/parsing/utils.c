@@ -36,7 +36,7 @@ int	check_rgb(int nb)
 	if (nb >= 0 && nb <= 255)
 		return (1);
 	else
-		return (map_error("Not rgb value"));
+		return (map_error("RGB must be between 0-255"));
 }
 
 /// @brief count the number of line with get_next_line
@@ -64,9 +64,9 @@ void	find_coma(char **line)
 		while (line[i][j] && line[i][j] != ',' && line[i][j] != '.')
 			j++;
 		if ((line[i][j] == ',' && line[i][j - 1] == ' ') || (line[i][j] == ',' && line[i][j + 1] == ' '))
-			map_error("No space allowed");
+			map_error("No space allowed before or after coma");
 		if ((line[i][j] == '.' && line[i][j - 1] == ' ') || (line[i][j] == '.' && line[i][j + 1] == ' '))
-			map_error("No space allowed");
+			map_error("No space allowed before or after dot");
 		i++;
 	}
 }

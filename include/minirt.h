@@ -125,6 +125,10 @@ typedef struct s_data
 	double		yaw;
 	char		type[NB_OBJECT][NB_OBJECT];
 	char		**map;
+	t_objs		*selected;
+	int			count_cam;
+	int			count_light;
+	int			count_alight;
 	t_selected	selected;
 	int			nb_objs;
 	int			img_height;

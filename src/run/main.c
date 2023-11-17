@@ -8,6 +8,9 @@ static void	init_data(t_data *data)
 	ft_bzero(data, sizeof (t_data));
 	aspect_ratio = 16.0 / 9.0;
 	data->img_height = WIDTH / aspect_ratio;
+	data->count_light = 0;
+	data->count_cam = 0;
+	data->count_alight = 0;
 	ft_memmove(data->type[0], "cy", 3);
 	ft_memmove(data->type[1], "sp", 3);
 	ft_memmove(data->type[2], "pl", 3);
