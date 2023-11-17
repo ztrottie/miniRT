@@ -115,6 +115,9 @@ typedef struct s_data
 	char		type[NB_OBJECT][NB_OBJECT];
 	char		**map;
 	t_objs		*selected;
+	int			count_cam;
+	int			count_light;
+	int			count_alight;
 	int			nb_objs;
 	int			img_height;
 	int			index;
