@@ -61,9 +61,11 @@ void	find_coma(char **line)
 	while (line[i])
 	{
 		j = 0;
-		while (line[i][j] && line[i][j] != ',')
+		while (line[i][j] && line[i][j] != ',' && line[i][j] != '.')
 			j++;
-		if (line[i][j] == ',' && line[i][j - 1] == ' ')
+		if ((line[i][j] == ',' && line[i][j - 1] == ' ') || (line[i][j] == ',' && line[i][j + 1] == ' '))
+			map_error("No space allowed");
+		if ((line[i][j] == '.' && line[i][j - 1] == ' ') || (line[i][j] == '.' && line[i][j + 1] == ' '))
 			map_error("No space allowed");
 		i++;
 	}

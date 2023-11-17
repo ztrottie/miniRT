@@ -48,21 +48,20 @@ void	cylinder_verif(t_data *data, char **map, int i)
 	splitted = ft_split(map[i], ' ');
 	if (!splitted)
 		map_error("bad split!");
-	printf("cy\n");
 	if (!splitted[0] || !splitted[1] || !splitted[2] || !splitted[3] || !splitted[4] || !splitted[5])
 		map_error("Missing arguments");
-	if (ft_strncmp(splitted[0], "cy", 2) == 0)
+	if (ft_strncmp(splitted[0], "cy", 3) == 0)
 	{
-		printf("cy2: %s\n", splitted[2]);
 		if (splitted[1] && count_char(splitted[1], ',') == 2)
-			parse_pos(splitted, &data->objs[i]);
+			parse_pos(splitted, &data->objs[data->index]);
 		if (splitted[2] && count_char(splitted[2], ',') == 2)
-			parse_vec(splitted, &data->objs[i]);
-		data->objs[i].radius = ft_atof(splitted[3]) / 2;
-		data->objs[i].height = ft_atof(splitted[4]);
+			parse_vec(splitted, &data->objs[data->index]);
+		data->objs[data->index].radius = ft_atof(splitted[3]) / 2;
+		data->objs[data->index].height = ft_atof(splitted[4]);
 		if (splitted[5] && check_rgb(ft_atoi(splitted[5])) && count_char(splitted[5], ',') == 2 && count_char(splitted[5], '.') == 0)
-			parse_color(splitted, &data->objs[i]);
-		data->objs[i].intersect_function = &hit_cylinder;
-		ft_x2free((void**)splitted);
+			parse_color(splitted, &data->objs[data->index]);
+		data->objs[data->index].intersect_function = &hit_cylinder;
+		data->index++;
 	}
+	ft_x2free((void**)splitted);
 }

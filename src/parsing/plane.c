@@ -44,17 +44,18 @@ void	plane_verif(t_data *data, char **map, int i)
 	splitted = ft_split(map[i], ' ');
 	if (!splitted)
 		map_error("bad split!");
-	printf("pl\n");
 	if (!splitted[0] || !splitted[1] || !splitted[2] || !splitted[3])
 		map_error("Missing arguments");
 	if (ft_strncmp(splitted[0], "pl", 2) == 0)
 	{
 		if (splitted[1] && count_char(splitted[1], ',') == 2)
-			parse_pos(splitted, &data->objs[i]);
+			parse_pos(splitted, &data->objs[data->index]);
 		if (splitted[2] && count_char(splitted[2], ',') == 2)
-			parse_vec(splitted, &data->objs[i]);
+			parse_vec(splitted, &data->objs[data->index]);
 		if (splitted[3] && check_rgb(ft_atoi(splitted[3])) && count_char(splitted[3], ',') == 2 && count_char(splitted[3], '.') == 0)
-			parse_color(splitted, &data->objs[i]);
-		data->objs[i].intersect_function = &hit_plane;
+			parse_color(splitted, &data->objs[data->index]);
+		data->objs[data->index].intersect_function = &hit_plane;
+	data->index++;
+		ft_x2free((void **)splitted);
 	}
 }
