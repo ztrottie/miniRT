@@ -1,4 +1,4 @@
-# include "../../include/renderer.h"
+#include "../../include/renderer.h"
 
 t_hitrec	hit_sphere(t_objs *sphere, t_ray ray, int t_max)
 {
@@ -19,14 +19,12 @@ t_hitrec	hit_sphere(t_objs *sphere, t_ray ray, int t_max)
 		if (hitrec.t <= T_MIN || t_max <= hitrec.t)
 			return (hitrec.hit = false, hitrec);
 	}
-	hitrec.hit = true;
 	hitrec.hitpoint = ray_at(ray, hitrec.t);
 	hitrec.normal = normalize(vec_sub_vec(hitrec.hitpoint, sphere->center));
 	if (dot_product(ray.dir, hitrec.normal) > 0)
 		hitrec.normal = vec_mult(-1, hitrec.normal);
 	hitrec.material = sphere->material;
-	hitrec.hitpoint = ray_at(init_ray(hitrec.hitpoint, hitrec.normal), 1e-4);
-	hitrec.inst = sphere;
-	hitrec.type = 0;
-	return (hitrec);
+	hitrec.hitpoint = ray_at(init_ray(hitrec.hitpoint, \
+	hitrec.normal), 0.00000000001);
+	return (hitrec.hit = true, hitrec.inst = sphere, hitrec);
 }

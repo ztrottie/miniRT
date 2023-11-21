@@ -2,9 +2,9 @@
 
 void	init_rotations(t_data *data)
 {
-	double yaw;
-	double x;
-	double z;
+	double	yaw;
+	double	x;
+	double	z;
 
 	data->pitch = data->cam_dir.y * 90;
 	x = data->cam_dir.x;

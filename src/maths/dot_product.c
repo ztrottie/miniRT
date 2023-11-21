@@ -1,4 +1,4 @@
-# include "../../include/maths.h"
+#include "../../include/maths.h"
 
 double	dot_product(t_vec v1, t_vec v2)
 {

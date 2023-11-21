@@ -23,5 +23,6 @@ void	final_viewport(t_data *data)
 	data->final_vp.p00_loc = vec_add(data->cam, data->final_vp.p00_loc);
 	data->dir_down = normalize(data->final_vp.delta_u);
 	data->dir_right = normalize(data->final_vp.delta_v);
-	data->dir_foward = normalize(vec_sub_vec(data->final_vp.vp_center, data->cam));
+	data->dir_foward = normalize(vec_sub_vec(data->final_vp.vp_center, \
+	data->cam));
 }

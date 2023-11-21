@@ -2,44 +2,49 @@
 
 void	cam_rotation(mlx_key_data_t keydata, t_data *data)
 {
-		if (keydata.key == MLX_KEY_UP)
-		{
-			if (data->pitch < 90)
-				data->pitch++;;
-		}
-		else if (keydata.key == MLX_KEY_DOWN)
-		{
-			if (data->pitch > -90)
-				data->pitch--;
-		}
-		if (keydata.key == MLX_KEY_LEFT)
-		{
-			data->yaw++;
-			if (data->yaw >= 181)
-				data->yaw = -179;
-		}
-		if (keydata.key == MLX_KEY_RIGHT)
-		{
-			data->yaw--;
-			if (data->yaw <= -181)
-				data->yaw = 179;
-		}
+	if (keydata.key == MLX_KEY_UP)
+	{
+		if (data->pitch < 90)
+			data->pitch++;
+	}
+	else if (keydata.key == MLX_KEY_DOWN)
+	{
+		if (data->pitch > -90)
+			data->pitch--;
+	}
+	if (keydata.key == MLX_KEY_LEFT)
+	{
+		data->yaw++;
+		if (data->yaw >= 181)
+			data->yaw = -179;
+	}
+	if (keydata.key == MLX_KEY_RIGHT)
+	{
+		data->yaw--;
+		if (data->yaw <= -181)
+			data->yaw = 179;
+	}
 }
 
 void	objs_rotation(mlx_key_data_t keydata, t_data *data)
 {
+	t_selected	*selected;
+	t_objs		*objs;
+
+	selected = &data->selected;
+	objs = selected->objs;
 	if (keydata.key == MLX_KEY_W)
-		data->selected.objs->normal = rotation_x(data->selected.objs->normal, ++data->selected.x);
+		objs->normal = rotation_x(objs->normal, ++selected->x);
 	else if (keydata.key == MLX_KEY_S)
-		data->selected.objs->normal = rotation_x(data->selected.objs->normal, --data->selected.x);
+		objs->normal = rotation_x(objs->normal, --selected->x);
 	else if (keydata.key == MLX_KEY_A)
-		data->selected.objs->normal = rotation_z(data->selected.objs->normal, ++data->selected.z);
+		objs->normal = rotation_z(objs->normal, ++selected->z);
 	else if (keydata.key == MLX_KEY_D)
-		data->selected.objs->normal = rotation_z(data->selected.objs->normal, --data->selected.z);
+		objs->normal = rotation_z(objs->normal, --selected->z);
 	else if (keydata.key == MLX_KEY_E)
-		data->selected.objs->normal = rotation_y(data->selected.objs->normal, ++data->selected.y);
+		objs->normal = rotation_y(objs->normal, ++selected->y);
 	else if (keydata.key == MLX_KEY_Q)
-		data->selected.objs->normal = rotation_y(data->selected.objs->normal, --data->selected.y);
+		objs->normal = rotation_y(objs->normal, --selected->y);
 }
 
 void	obj_movement(mlx_key_data_t keydata, t_data *data)
@@ -97,7 +102,7 @@ void	movement_handler(mlx_key_data_t keydata, void *param)
 		if (keydata.key == MLX_KEY_ESCAPE)
 		{
 			mlx_close_window(data->mlx);
-			return;
+			return ;
 		}
 		ray_loop(data);
 	}
