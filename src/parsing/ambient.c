@@ -9,7 +9,8 @@ static void	parse_rgb(char **map, t_alight *alight)
 		map_error("bad split!");
 	if (splitted && (!splitted[0] || !splitted[1] || !splitted[2]))
 		map_error("Cannot be empty");
-	if (ft_strlen(splitted[0]) > 3 || ft_strlen(splitted[1]) > 3 || ft_strlen(splitted[2]) > 4)
+	if (ft_strlen(splitted[0]) > 3 || ft_strlen(splitted[1]) > 3
+		|| ft_strlen(splitted[2]) > 4)
 		map_error("Not rgb value in ambient, must be max 3 digits");
 	check_rgb(ft_atoi(splitted[0]));
 	check_rgb(ft_atoi(splitted[1]));
@@ -36,7 +37,8 @@ void	ambient_verif(t_data *data, char **map, int i)
 			data->alight.material.bright = ft_atof(splitted[1]);
 		else
 			map_error("invalid brightness value");
-		if (count_char(splitted[2], '.') == 0 && count_char(splitted[2], ',') == 2)
+		if (count_char(splitted[2], '.') == 0 && \
+			count_char(splitted[2], ',') == 2)
 			parse_rgb(splitted, &data->alight);
 		else
 			map_error("Invalid patern for ambient rgb");

@@ -7,7 +7,8 @@ void	parse_cy_color(char **map, t_objs *obj)
 	splitted = ft_split(map[5], ',');
 	if (splitted && (!splitted[0] || !splitted[1] || !splitted[2]))
 		map_error("Cannot be empty");
-	if (ft_strlen(splitted[0]) > 3 || ft_strlen(splitted[1]) > 3 || ft_strlen(splitted[2]) > 4)
+	if (ft_strlen(splitted[0]) > 3 || ft_strlen(splitted[1]) > 3
+		|| ft_strlen(splitted[2]) > 4)
 		map_error("Not rgb value, most be max 3 digits in sphere");
 	check_rgb(ft_atoi(splitted[0]));
 	check_rgb(ft_atoi(splitted[1]));
@@ -31,11 +32,9 @@ void	check_cylinder(t_data *data, char **splitted)
 		map_error("Invalid patern for cylinder vectors");
 	data->objs[data->index].radius = ft_atof(splitted[3]) / 2;
 	data->objs[data->index].height = ft_atof(splitted[4]);
-	if (splitted[5] && count_char(splitted[5], ',') == 2 && count_char(splitted[5], '.') == 0)
-	{
+	if (splitted[5] && count_char(splitted[5], ',') == 2 
+		&& count_char(splitted[5], '.') == 0)
 		parse_cy_color(splitted, &data->objs[data->index]);
-		printf("cy\n");
-	}
 	else
 		map_error("Invalid patern for cylinder rgb");
 }
@@ -47,7 +46,8 @@ void	cylinder_verif(t_data *data, char **map, int i)
 	splitted = ft_split(map[i], ' ');
 	if (!splitted)
 		map_error("bad split!");
-	if (!splitted[0] || !splitted[1] || !splitted[2] || !splitted[3] || !splitted[4] || !splitted[5] || splitted[6])
+	if (!splitted[0] || !splitted[1] || !splitted[2] || !splitted[3]
+		|| !splitted[4] || !splitted[5] || splitted[6])
 		map_error("Missing arguments need 5 arguments for cylinder");
 	if (ft_strncmp(splitted[0], "cy", 3) == 0)
 	{
@@ -55,5 +55,5 @@ void	cylinder_verif(t_data *data, char **map, int i)
 		data->objs[data->index].intersect_function = &hit_cylinder;
 		data->index++;
 	}
-	ft_x2free((void**)splitted);
+	ft_x2free((void **)splitted);
 }

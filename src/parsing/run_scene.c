@@ -25,8 +25,8 @@ void	obj_increment(t_data *data)
 
 void	count_not_objs(t_data *data)
 {
-	printf("%d %d %d\n", data->count_alight, data->count_cam, data->count_light);
-	if (data->count_light != 1 || data->count_cam != 1 || data->count_alight != 1)
+	if (data->count_light != 1 || data->count_cam != 1
+		|| data->count_alight != 1)
 		map_error("Cannot have more than one cam light or ambient light");
 }
 
