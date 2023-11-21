@@ -10,7 +10,9 @@ static void	parse_rgb(char **map, t_alight *alight)
 	alight->material.color.x = ft_atoi(splitted[0]);
 	alight->material.color.y = ft_atoi(splitted[1]);
 	alight->material.color.z = ft_atoi(splitted[2]);
+	printf("r:%f g:%f b:%f\n", alight->material.color.x, alight->material.color.y, alight->material.color.z);
 	alight->material.color = normalize(alight->material.color);
+	printf("r:%f g:%f b:%f\n", alight->material.color.x, alight->material.color.y, alight->material.color.z);
 	ft_x2free((void **)splitted);
 }
 
