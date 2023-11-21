@@ -47,7 +47,7 @@ bool	check_if_obj(t_data *data, char *line)
 		j = 0;
 		while (j < NB_OBJECT)
 		{
-			if (line[i] && data->type[j] && ft_strncmp(line, data->type[j], 2) == 0)
+			if (line[i] && ft_strncmp(line, data->type[j], 2) == 0)
 				return (true);
 			j++;
 		}
