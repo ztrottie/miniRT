@@ -1,6 +1,6 @@
 #include "../../include/parsing.h"
 
-static void	parse_pos(char **map, t_light *light)
+static void	parse_light_pos(char **map, t_light *light)
 {
 	char	**splitted;
 
@@ -8,7 +8,7 @@ static void	parse_pos(char **map, t_light *light)
 	if (!splitted)
 		map_error("bad split!");
 	if (splitted && (!splitted[0] || !splitted[1] || !splitted[2]))
-		map_error("Must be a least 0, cannot be empty");
+		map_error("Must be a least 0, cannot be empty in light");
 	light->center.x = ft_atof(splitted[0]);
 	light->center.y = ft_atof(splitted[1]);
 	light->center.z = ft_atof(splitted[2]);
@@ -25,7 +25,7 @@ void	light_verif(t_data *data, char **map, int i)
 	if (ft_strncmp(splitted[0], "L", 2) == 0)
 	{
 		if (splitted[1] && count_char(splitted[1], ',') == 2)
-			parse_pos(splitted, &data->light);
+			parse_light_pos(splitted, &data->light);
 		else
 			map_error("Invalid patern for light position");
 		if (splitted[2] && check_brightness(ft_atof(splitted[2])))

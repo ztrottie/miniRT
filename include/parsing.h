@@ -36,6 +36,8 @@ void			find_coma(char **line);
 bool			check_if_obj(t_data *data, char *line);
 void			count_not_objs(t_data *data);
 
-
+void	parse_color(char **map, t_objs *obj);
+void	parse_vec(char **map, t_objs *obj);
+void	parse_pos(char **map, t_objs *obj);
 
 #endif
