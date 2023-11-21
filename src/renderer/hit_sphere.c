@@ -6,17 +6,16 @@ t_hitrec	hit_sphere(t_objs *sphere, t_ray ray, int t_max)
 	t_quad_sphere	quad;
 
 	quad.oc = vec_sub_vec(ray.or, sphere->center);
-	quad.a = sqr(vector_length(ray.dir));
 	quad.half_b = dot_product(quad.oc, ray.dir);
 	quad.c = sqr(vector_length(quad.oc)) - sqr(sphere->radius);
-	quad.disc = sqr(quad.half_b) - quad.a * quad.c;
+	quad.disc = sqr(quad.half_b) - quad.c;
 	if (quad.disc < 0)
 		return (hitrec.hit = false, hitrec);
 	quad.sqrtd = sqrt(quad.disc);
-	hitrec.t = (-quad.half_b - quad.sqrtd) / quad.a;
+	hitrec.t = (-quad.half_b - quad.sqrtd);
 	if (hitrec.t <= T_MIN || t_max <= hitrec.t)
 	{
-		hitrec.t = (-quad.half_b + quad.sqrtd) / quad.a;
+		hitrec.t = (-quad.half_b + quad.sqrtd);
 		if (hitrec.t <= T_MIN || t_max <= hitrec.t)
 			return (hitrec.hit = false, hitrec);
 	}
