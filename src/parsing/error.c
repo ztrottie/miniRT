@@ -8,6 +8,7 @@ int	map_error(char *message)
 	ft_printf("\n");
 	exit(-1);
 }
+
 /// @brief check if av has a .rt at the end
 /// @param av the main arguments wich would be a file
 /// @return the difference between the av and .ber if 0 then there is a .ber 

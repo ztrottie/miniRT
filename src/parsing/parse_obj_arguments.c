@@ -7,7 +7,8 @@ void	parse_color(char **map, t_objs *obj)
 	splitted = ft_split(map[3], ',');
 	if (splitted && (!splitted[0] || !splitted[1] || !splitted[2]))
 		map_error("Cannot be empty");
-	if (ft_strlen(splitted[0]) > 3 || ft_strlen(splitted[1]) > 3 || ft_strlen(splitted[2]) > 4)
+	if (ft_strlen(splitted[0]) > 3 || ft_strlen(splitted[1]) > 3
+		|| ft_strlen(splitted[2]) > 4)
 		map_error("Not rgb value, most be max 3 digits in sphere");
 	check_rgb(ft_atoi(splitted[0]));
 	check_rgb(ft_atoi(splitted[1]));
@@ -25,7 +26,7 @@ void	parse_vec(char **map, t_objs *obj)
 
 	splitted = ft_split(map[2], ',');
 	if (splitted && (!splitted[0] || !splitted[1] || !splitted[2]))
-		map_error("t'est gay");	
+		map_error("Vector cannot be empty must fill all");
 	obj->normal.x = ft_atof(splitted[0]);
 	obj->normal.y = ft_atof(splitted[1]);
 	obj->normal.z = ft_atof(splitted[2]);
@@ -39,7 +40,7 @@ void	parse_pos(char **map, t_objs *obj)
 
 	splitted = ft_split(map[1], ',');
 	if (splitted && (!splitted[0] || !splitted[1] || !splitted[2]))
-		map_error("t'est gay");
+		map_error("Position cannot be empty must fill all");
 	obj->center.x = ft_atof(splitted[0]);
 	obj->center.y = ft_atof(splitted[1]);
 	obj->center.z = ft_atof(splitted[2]);
