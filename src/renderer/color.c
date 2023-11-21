@@ -10,10 +10,10 @@ int	get_color(t_color color)
 	double	r;
 	double	g;
 	double	b;
-
-	r = color.x * 255.0;
-	g = color.y * 255.0;
-	b = color.z * 255.0;
+	
+	r = fmin(255, color.x * 255.0);
+	g = fmin(255, color.y * 255.0);
+	b = fmin(255, color.z * 255.0);
 	return (get_rgba(r, g, b, 255));
 }
 
