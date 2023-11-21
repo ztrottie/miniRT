@@ -19,5 +19,6 @@ t_point		ray_at(t_ray ray, double t);
 t_vec		rotation_y(t_vec vec, double deg);
 t_vec		rotation_x(t_vec vec, double deg);
 t_vec		rotation_z(t_vec vec, double deg);
+t_vec		vec_mult_vec(t_vec v1, t_vec v2);
 
 #endif

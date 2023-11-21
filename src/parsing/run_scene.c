@@ -14,7 +14,7 @@ void	obj_increment(t_data *data)
 		j = 0;
 		while (j < NB_OBJECT)
 		{
-			if (data->map[i] && data->type[j] && ft_strncmp(data->map[i], data->type[j], 2) == 0)
+			if (data->map[i] && ft_strncmp(data->map[i], data->type[j], 2) == 0)
 				count++;
 			j++;
 		}

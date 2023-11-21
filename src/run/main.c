@@ -27,6 +27,8 @@ int	main(int argc, char **argv)
 		map_error("Select a map in Scenes/something.rt");
 	else
 		run_map(&data, argv[1]);
+	data.alight.material.color = normalize(init_vec(255, 255, 255));
+	data.alight.material.bright = 0.2;
 	init_viewport(&data);
 	init_rotations(&data);
 	mlx_key_hook(data.mlx, movement_handler, &data);

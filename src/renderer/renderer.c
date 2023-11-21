@@ -14,10 +14,8 @@ void	ray_gen(t_data *data, t_rend *rend)
 void	ray_loop(t_data *data)
 {
 	t_rend		rend;
-	t_viewport	*vp;
 
 	final_viewport(data);
-	vp = &data->final_vp;
 	rend.j = 0;
 	while (rend.j < data->img_height)
 	{
