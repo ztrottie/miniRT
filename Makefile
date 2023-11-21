@@ -49,6 +49,7 @@ PARSING_SRCS	=	get_map.c\
 					ambient.c\
 					light.c\
 					camera.c\
+					parse_obj_arguments.c\
 
 MATH_SRCS		=	basic_operation.c \
 					basic_vector_operation.c \
