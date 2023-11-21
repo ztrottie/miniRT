@@ -9,7 +9,7 @@ else ifeq ($(shell uname -s),Darwin)
 endif
 
 CC				=	gcc
-CFLAGS			=	-Wextra -Werror -Wall -g -fsanitize=address
+CFLAGS			=	-Wextra -Werror -Wall -g #-fsanitize=address
 
 COLOUR_GREEN	=	\033[0;32m
 COLOUR_YELLOW	=	\033[0;33m
@@ -56,7 +56,8 @@ MATH_SRCS		=	basic_operation.c \
 					dot_product.c \
 					basic_ray_operation.c \
 					cross_product.c \
-					matrices.c
+					matrices.c \
+					basic_vec_vec.c
 
 RENDERER_SRCS	=	renderer.c \
 					init_vectors.c \

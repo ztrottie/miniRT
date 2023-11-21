@@ -24,7 +24,7 @@ t_hitrec	hit_plane(t_objs *plane, t_ray ray, int t_max)
 		hitrec.normal = plane->normal;
 	else
 		hitrec.normal = vec_mult(-1, plane->normal);
-	hitrec.hitpoint = ray_at(init_ray(hitrec.hitpoint, hitrec.normal), 1e-4);
-	hitrec.inst = plane;
-	return (hitrec);
+	hitrec.hitpoint = ray_at(init_ray(hitrec.hitpoint, \
+	hitrec.normal), 0.00000000001);
+	return (hitrec.inst = plane, hitrec);
 }

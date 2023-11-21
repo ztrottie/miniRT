@@ -2,7 +2,7 @@
 
 t_vec	cross_product(t_vec v1, t_vec v2)
 {
-	t_vec res;
+	t_vec	res;
 
 	res.x = v1.y * v2.z - v1.z * v2.y;
 	res.y = v1.z * v2.x - v1.x * v2.z;
