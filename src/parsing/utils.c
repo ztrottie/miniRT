@@ -8,23 +8,24 @@ int	check_brightness(double brightness)
 		return (map_error("brightness must be in range [0.0,1.0]"));
 }
 
-char	**reset(char **env, char **env_cpy)
+char	**reset(char **env, char **cpy)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	env = ft_calloc(ft_x2strlen(env_cpy) + 1, sizeof(char *));
-	while (env_cpy[j])
+	env = ft_calloc(ft_x2strlen(cpy) + 1, sizeof(char *));
+	while (cpy[j])
 	{
-		if (ft_strcmp(env_cpy[j], "\n"))
+		if (ft_strcmp(cpy[j], "\n"))
 		{
-			env[i] = ft_strdup(env_cpy[j]);
+			env[i] = ft_strdup(cpy[j]);
 			i++;
 		}
 		j++;
 	}
+	ft_x2free((void **)cpy);
 	return (env);
 }
 

@@ -36,5 +36,6 @@ int	main(int argc, char **argv)
 	ray_loop(&data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
+	ft_x2free((void **)data.objs);
 	return (0);
 }

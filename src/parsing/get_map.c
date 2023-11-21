@@ -13,10 +13,10 @@ void	read_map(t_data *data, char *av)
 	fd = open_map(av);
 	count = map_len(av);
 	line = get_next_line(fd);
-	data->map = ft_calloc(sizeof(char *), (count + 1));
+	data->map = ft_calloc(sizeof(char *), (count + 2));
 	while (i < count)
 	{
-		data->map[i] = ft_strdup(line);
+		data->map[i] = line;
 		line = get_next_line(fd);
 		i++;
 	}
