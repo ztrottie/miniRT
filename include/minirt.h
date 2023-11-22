@@ -45,17 +45,17 @@ typedef struct s_ray
 	t_vec	dir;
 }	t_ray;
 
-typedef struct	s_material
+typedef struct s_material
 {
 	t_color	color;
 	float	bright;
 }	t_material;
 
-
 typedef struct s_objs
 {
 	int					type;
-	struct s_hitrec		(*intersect_function)(struct s_objs*, struct s_ray, int t_max);
+	struct s_hitrec		(*intersect_function)(struct s_objs*, \
+	struct s_ray, int t_max);
 	t_point				center;
 	t_vec				normal;
 	t_material			material;
@@ -85,7 +85,7 @@ typedef struct s_light
 	t_material	material;
 }	t_light;
 
-typedef struct	s_viewport
+typedef struct s_viewport
 {
 	double	vp_height;
 	double	vp_width;
@@ -135,6 +135,5 @@ typedef struct s_data
 	bool		rot_mod;
 	double		fov;
 }	t_data;
-
 
 #endif
