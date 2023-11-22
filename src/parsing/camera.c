@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   camera.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbeaumon <zbeaumon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 19:58:27 by zbeaumon          #+#    #+#             */
+/*   Updated: 2023/11/21 19:58:28 by zbeaumon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/parsing.h"
 
 static void	parse_cam_pos(char **map, t_data *data)
@@ -9,6 +21,9 @@ static void	parse_cam_pos(char **map, t_data *data)
 		map_error("bad split!");
 	if (splitted && (!splitted[0] || !splitted[1] || !splitted[2]))
 		map_error("Cannot be emty in cam pos");
+	if (!check_if_all_numbers(splitted[0]) || !check_if_all_numbers(splitted[1])
+		|| !check_if_all_numbers(splitted[2]))
+		map_error("Only numbers allowed");
 	data->cam.x = ft_atof(splitted[0]);
 	data->cam.y = ft_atof(splitted[1]);
 	data->cam.z = ft_atof(splitted[2]);
@@ -24,6 +39,9 @@ static void	parse_cam_vec(char **map, t_data *data)
 		map_error("bad split!");
 	if (splitted && (!splitted[0] || !splitted[1] || !splitted[2]))
 		map_error("Must be at least 0 in cam vec");
+	if (!check_if_all_numbers(splitted[0]) || !check_if_all_numbers(splitted[1])
+		|| !check_if_all_numbers(splitted[2]))
+		map_error("Only numbers allowed");
 	data->cam_dir.x = ft_atof(splitted[0]);
 	data->cam_dir.y = ft_atof(splitted[1]);
 	data->cam_dir.z = ft_atof(splitted[2]);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbeaumon <zbeaumon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 19:58:34 by zbeaumon          #+#    #+#             */
+/*   Updated: 2023/11/21 19:58:35 by zbeaumon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/parsing.h"
 /// @brief print error with a new line for the costum message and exit with -1
 /// @param message the error message to display
@@ -54,4 +66,18 @@ bool	check_if_obj(t_data *data, char *line)
 		}
 	}
 	return (false);
+}
+
+bool	check_if_all_numbers(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_isalpha(str[i]))
+			return (false);
+		i++;
+	}
+	return (true);
 }

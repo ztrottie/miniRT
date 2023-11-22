@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_map.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbeaumon <zbeaumon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 19:58:37 by zbeaumon          #+#    #+#             */
+/*   Updated: 2023/11/21 19:58:38 by zbeaumon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/parsing.h"
 
 /// @brief read the file and dup each line into data.map wich is a double array
@@ -29,7 +41,7 @@ void	check_map(t_data *data, int i)
 {
 	find_coma(data->map);
 	if (ft_x2strlen(data->map) == 0)
-		map_error("Your map is empty dumbass🤡");
+		map_error("Empty map");
 	else if (ft_strncmp(data->map[i], "A ", 2) == 0)
 		ambient_verif(data, data->map, i);
 	else if (ft_strncmp(data->map[i], "L ", 2) == 0)
@@ -43,5 +55,5 @@ void	check_map(t_data *data, int i)
 	else if (ft_strncmp(data->map[i], "pl ", 3) == 0)
 		plane_verif(data, data->map, i);
 	else
-		map_error("fix your shit bozo🧂");
+		map_error("Unknow character");
 }
