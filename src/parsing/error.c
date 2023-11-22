@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zbeaumon <zbeaumon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ztrottie <ztrottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:58:34 by zbeaumon          #+#    #+#             */
-/*   Updated: 2023/11/21 19:58:35 by zbeaumon         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:26:45 by ztrottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	check_if_rt(char *av)
 	if (!av)
 		return (0);
 	else
-		return (ft_strncmp(av, ".ber", 5));
+		return (ft_strncmp(av, ".rt", 3));
 }
 
 /// @brief open a file and return an error if necessary
@@ -43,7 +43,7 @@ int	open_map(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		map_error("Could not open the selected map!");
-	else if (check_if_rt(path) == 0)
+	else if (check_if_rt(path))
 		map_error("Scene must finish with a .rt");
 	return (fd);
 }

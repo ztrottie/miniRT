@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zbeaumon <zbeaumon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ztrottie <ztrottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:58:37 by zbeaumon          #+#    #+#             */
-/*   Updated: 2023/11/21 19:58:38 by zbeaumon         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:30:19 by ztrottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	read_map(t_data *data, char *av)
 	i = 0;
 	fd = open_map(av);
 	count = map_len(av);
+	if (count == 1)
+		map_error("Invalid map");
 	line = get_next_line(fd);
 	data->map = ft_calloc(sizeof(char *), (count + 2));
 	if (!data->map)
@@ -42,9 +44,7 @@ void	read_map(t_data *data, char *av)
 void	check_map(t_data *data, int i)
 {
 	find_coma(data->map);
-	if (ft_x2strlen(data->map) == 0)
-		map_error("Empty map");
-	else if (ft_strncmp(data->map[i], "A ", 2) == 0)
+	if (ft_strncmp(data->map[i], "A ", 2) == 0)
 		ambient_verif(data, data->map, i);
 	else if (ft_strncmp(data->map[i], "L ", 2) == 0)
 		light_verif(data, data->map, i);
