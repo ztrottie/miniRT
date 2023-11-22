@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   light.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbeaumon <zbeaumon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 19:58:40 by zbeaumon          #+#    #+#             */
+/*   Updated: 2023/11/21 19:58:41 by zbeaumon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/parsing.h"
 
 static void	parse_light_pos(char **map, t_light *light)
@@ -9,6 +21,9 @@ static void	parse_light_pos(char **map, t_light *light)
 		map_error("bad split!");
 	if (splitted && (!splitted[0] || !splitted[1] || !splitted[2]))
 		map_error("Must be a least 0, cannot be empty in light");
+	if (!check_if_all_numbers(splitted[0]) || !check_if_all_numbers(splitted[1])
+		|| !check_if_all_numbers(splitted[2]))
+		map_error("Only numbers allowed");
 	light->center.x = ft_atof(splitted[0]);
 	light->center.y = ft_atof(splitted[1]);
 	light->center.z = ft_atof(splitted[2]);

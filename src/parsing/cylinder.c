@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cylinder.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbeaumon <zbeaumon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 19:58:30 by zbeaumon          #+#    #+#             */
+/*   Updated: 2023/11/21 19:58:31 by zbeaumon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/parsing.h"
 
 void	parse_cy_color(char **map, t_objs *obj)
@@ -10,6 +22,9 @@ void	parse_cy_color(char **map, t_objs *obj)
 	if (ft_strlen(splitted[0]) > 3 || ft_strlen(splitted[1]) > 3
 		|| ft_strlen(splitted[2]) > 4)
 		map_error("Not rgb value, most be max 3 digits in sphere");
+	if (!check_if_all_numbers(splitted[0]) || !check_if_all_numbers(splitted[1])
+		|| !check_if_all_numbers(splitted[2]))
+		map_error("Only numbers allowed");
 	check_rgb(ft_atoi(splitted[0]));
 	check_rgb(ft_atoi(splitted[1]));
 	check_rgb(ft_atoi(splitted[2]));

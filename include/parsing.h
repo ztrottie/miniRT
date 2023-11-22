@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbeaumon <zbeaumon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 20:01:09 by zbeaumon          #+#    #+#             */
+/*   Updated: 2023/11/21 20:01:10 by zbeaumon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSING_H
 # define PARSING_H
 
@@ -35,6 +47,7 @@ int				check_brightness(double brightness);
 void			find_coma(char **line);
 bool			check_if_obj(t_data *data, char *line);
 void			count_not_objs(t_data *data);
+bool			check_if_all_numbers(char *str);
 
 void			parse_color(char **map, t_objs *obj);
 void			parse_vec(char **map, t_objs *obj);
