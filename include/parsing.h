@@ -15,7 +15,7 @@
 # define MAP		"Scenes/testScene.rt"
 
 int				map_error(char *message);
-int 			map_len(char *av);
+int				map_len(char *av);
 void			read_map(t_data *data, char *av);
 int				open_map(char *path);
 void			check_map(t_data *data, int i);
@@ -36,8 +36,8 @@ void			find_coma(char **line);
 bool			check_if_obj(t_data *data, char *line);
 void			count_not_objs(t_data *data);
 
-void	parse_color(char **map, t_objs *obj);
-void	parse_vec(char **map, t_objs *obj);
-void	parse_pos(char **map, t_objs *obj);
+void			parse_color(char **map, t_objs *obj);
+void			parse_vec(char **map, t_objs *obj);
+void			parse_pos(char **map, t_objs *obj);
 
 #endif

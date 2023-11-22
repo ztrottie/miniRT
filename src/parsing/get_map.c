@@ -14,6 +14,8 @@ void	read_map(t_data *data, char *av)
 	count = map_len(av);
 	line = get_next_line(fd);
 	data->map = ft_calloc(sizeof(char *), (count + 2));
+	if (!data->map)
+		map_error("malloc fail");
 	while (i < count)
 	{
 		data->map[i] = line;
