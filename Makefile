@@ -130,9 +130,6 @@ libft:
 	@if [ ! -d "$(LIBFT_DIR)" ]; then \
         echo "libft directory does not exist, cloning..."; \
         git clone -b $(LIBFT_VERSION) -q $(LIBFT_GIT_URL) $(LIBFT_DIR); \
-    else \
-        echo "libft directory already exists, pulling latest version..."; \
-        cd $(LIBFT_DIR) && git pull; \
 	fi
 	@$(MAKE) -sC $(LIBFT_DIR)
 
