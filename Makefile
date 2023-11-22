@@ -20,7 +20,7 @@ LIB_DIR			=	lib/
 LIBFT_DIR		=	$(LIB_DIR)libft/
 LIBFT			=	$(LIB_DIR)libft/libft.a
 LIBFT_GIT_URL	=	https://github.com/ztrottie/libft.git
-LIBFT_VERSION	=	v1.0.0
+LIBFT_VERSION	=	v2.0.0
 
 LIBMLX_DIR		=	$(LIB_DIR)MLX42/
 LIBMLX			=	$(LIBMLX_DIR)build/libmlx42.a
@@ -129,7 +129,7 @@ libmlx:
 libft:
 	@if [ ! -d "$(LIBFT_DIR)" ]; then \
         echo "libft directory does not exist, cloning..."; \
-        git clone -q $(LIBFT_GIT_URL) $(LIBFT_DIR); \
+        git clone -b $(LIBFT_VERSION) -q $(LIBFT_GIT_URL) $(LIBFT_DIR); \
     else \
         echo "libft directory already exists, pulling latest version..."; \
         cd $(LIBFT_DIR) && git pull; \
