@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_collision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zbeaumon <zbeaumon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ztrottie <ztrottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:58:12 by zbeaumon          #+#    #+#             */
-/*   Updated: 2023/11/21 19:58:13 by zbeaumon         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:44:30 by ztrottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ t_hitrec	hit_light(t_data *data, t_hitrec hitrec)
 	t_hitrec	hitrec2;
 	double		bright;
 
-	ambient_color = vec_mult(data->alight.material.bright, \
-	vec_add(data->alight.material.color, hitrec.material.color));
+	ambient_color = vec_mult(data->alight.material.bright, vec_add(data->alight.material.color, hitrec.material.color));
 	ray_direction = normalize(vec_sub_vec(data->light.center, hitrec.hitpoint));
 	ray = init_ray(hitrec.hitpoint, ray_direction);
 	hitrec2 = ray_collisions(data, ray, \

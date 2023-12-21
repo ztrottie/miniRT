@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zbeaumon <zbeaumon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ztrottie <ztrottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:59:00 by zbeaumon          #+#    #+#             */
-/*   Updated: 2023/11/21 19:59:01 by zbeaumon         ###   ########.fr       */
+/*   Updated: 2023/11/23 09:49:49 by ztrottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ void	objs_rotation(mlx_key_data_t keydata, t_data *data)
 	selected = &data->selected;
 	objs = selected->objs;
 	if (keydata.key == MLX_KEY_W)
-		objs->normal = rotation_x(objs->normal, ++selected->x);
+		objs->normal = rotation_x(objs->normal, 1);
 	else if (keydata.key == MLX_KEY_S)
-		objs->normal = rotation_x(objs->normal, --selected->x);
+		objs->normal = rotation_x(objs->normal, -1);
 	else if (keydata.key == MLX_KEY_A)
-		objs->normal = rotation_z(objs->normal, ++selected->z);
+		objs->normal = rotation_z(objs->normal, 1);
 	else if (keydata.key == MLX_KEY_D)
-		objs->normal = rotation_z(objs->normal, --selected->z);
+		objs->normal = rotation_z(objs->normal, -1);
 	else if (keydata.key == MLX_KEY_E)
-		objs->normal = rotation_y(objs->normal, ++selected->y);
+		objs->normal = rotation_y(objs->normal, 1);
 	else if (keydata.key == MLX_KEY_Q)
-		objs->normal = rotation_y(objs->normal, --selected->y);
+		objs->normal = rotation_y(objs->normal, -1);
 }
 
 void	obj_movement(mlx_key_data_t keydata, t_data *data)
