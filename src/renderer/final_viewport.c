@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   final_viewport.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zbeaumon <zbeaumon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ztrottie <ztrottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:57:51 by zbeaumon          #+#    #+#             */
-/*   Updated: 2023/11/21 19:57:52 by zbeaumon         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:45:41 by ztrottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void	final_viewport(t_data *data)
 	pitch(data);
 	yaw(data);
 	data->final_vp.p00_loc = vec_add(data->cam, data->final_vp.p00_loc);
+	data->final_vp.vp_center = vec_add(data->cam, data->final_vp.vp_center);
 	data->dir_down = normalize(data->final_vp.delta_u);
 	data->dir_right = normalize(data->final_vp.delta_v);
 	data->dir_foward = normalize(vec_sub_vec(data->final_vp.vp_center, \
 	data->cam));
+	printf("final vp: x:%f y:%f z:%f\n", data->final_vp.p00_loc.x, data->final_vp.p00_loc.y, data->final_vp.p00_loc.z);
 }

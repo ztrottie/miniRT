@@ -6,7 +6,7 @@
 /*   By: ztrottie <ztrottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:59:59 by zbeaumon          #+#    #+#             */
-/*   Updated: 2023/12/21 14:33:26 by ztrottie         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:46:57 by ztrottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_vec	vp_upper_left(t_viewport *vp)
 	t_vec	v1;
 	t_vec	v2;
 
-	v1 = vec_sub_vec(init_vec(0, 0, 0), init_vec(0, 0, vp->focal_len));
+	v1 = init_vec(0, 0, -vp->focal_len);
 	v2 = vec_sub_vec(v1, vec_div(2, vp->vp_u));
 	return (vec_sub_vec(v2, vec_div(2, vp->vp_v)));
 }
@@ -48,4 +48,5 @@ void	init_viewport(t_data *data)
 	vp->delta_u = vec_div(data->img_height, vp->vp_u);
 	vp->upper_left = vp_upper_left(vp);
 	vp->p00_loc = vp_p00_loc(vp);
+	printf("init vp: x:%f y:%f z:%f\n", vp->p00_loc.x, vp->p00_loc.y, vp->p00_loc.z);
 }

@@ -6,7 +6,7 @@
 /*   By: ztrottie <ztrottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:59:00 by zbeaumon          #+#    #+#             */
-/*   Updated: 2023/11/23 09:49:49 by ztrottie         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:47:35 by ztrottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	obj_movement(mlx_key_data_t keydata, t_data *data)
 void	cam_movement(mlx_key_data_t keydata, t_data *data)
 {
 	if (keydata.key == MLX_KEY_W)
-		data->cam = vec_add(data->cam, data->dir_foward);
-	else if (keydata.key == MLX_KEY_S)
 		data->cam = vec_add(data->cam, vec_mult(-1, data->dir_foward));
+	else if (keydata.key == MLX_KEY_S)
+		data->cam = vec_add(data->cam, data->dir_foward);
 	else if (keydata.key == MLX_KEY_A)
 		data->cam = vec_add(data->cam, vec_mult(-1, data->dir_right));
 	else if (keydata.key == MLX_KEY_D)
